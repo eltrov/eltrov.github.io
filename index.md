@@ -14,8 +14,12 @@
 
 <body>
 
-<button id="btnFish">Fish!</button>
-<button id="btnBugs">Bugs!</button>
+<span id="buttons">
+
+<button id="btnFish" class="button btnFish">Fish!</button>
+<button id="btnBugs" class="button btnBugs">Bugs!</button>
+
+</span>
 
 </body>
 

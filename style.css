@@ -56,7 +56,6 @@ table {
   height: auto;
   border-collapse: collapse;
   display: none;
-  
 }
 
 
@@ -64,9 +63,7 @@ th {
   width: auto;
   height: auto;
   border: 1px;
-  border-style: solid;
-
-  
+  border-style: solid;  
 }
 
 tr {
@@ -112,8 +109,16 @@ display: block;
 background-color: #008CBA;
 }
 
+.btnFishPressed {
+background-color: #20ACDA;
+}
+
 .btnBugs {
 background-color: #4CAF50;
+}
+
+.btnBugsPressed {
+background-color: #6CCF70;
 }
 
 span {
