@@ -1,0 +1,21 @@
+id="f040"
+Name="Piranha"
+Location="River"
+size="Small"
+Value
+hastime=bool	false="All day"
+Time1Start="9" 	(9 AM)
+Time1End="16" 	(4 PM)
+Time2Start="21"	(9 PM)
+Time2End="4"	(4 AM)
+hasrange=bool	false="Year-round)
+MonthNHStart=6	June
+MontheNHEnd=9	September
+MonthSHStart=12	December
+MonthSHEnd=3	March
+Collected=bool
+
+color
+white - not collected (default)
+green - collected
+red - not collected, out of season
