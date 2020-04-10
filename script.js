@@ -30,6 +30,8 @@ function populateHeader(jsonObj) {
   // CREATE DYNAMIC TABLE.
   var table = document.createElement("table");
 
+  table.id = "Fish"; // setting up the ID to jquery with
+
   // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
   var tr = table.insertRow(-1); // TABLE ROW.
