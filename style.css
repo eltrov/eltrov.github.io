@@ -10,6 +10,7 @@ body {
   */
   width: auto;
   margin: 0 auto;
+  background-color: #222426;
 }
 
 h1, h2 {
@@ -55,26 +56,34 @@ table {
   height: auto;
   border-collapse: collapse;
   display: none;
+  
 }
 
-/*
+
 th {
   width: auto;
   height: auto;
   border: 1px;
   border-style: solid;
+
+  
 }
-*/
+
 tr {
   width: auto;
   height: auto;
+  border: 1px;
+  border-style: solid;
+  background-color:#dddbd9;
 }
 td {
   width: auto;
   height: auto;
   border: 1px;
   border-style: solid;
+  background-color:#dddbd9;
 }
+
 .icon {
 width: 75px;
 height: 75px;
@@ -83,4 +92,32 @@ border-radius: 100%;
 
 tbody {
 display: block;
+
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.btnFish {
+background-color: #008CBA;
+}
+
+.btnBugs {
+background-color: #4CAF50;
+}
+
+span {
+display: block;
+text-align: center;
+margin-top: 20px;
 }

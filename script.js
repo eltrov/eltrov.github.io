@@ -48,6 +48,7 @@ function populateHeader(jsonObj) {
 //we don't establish the tbody in the script but it's made automatically and it needs to be aligned so I hope this works
 
   var tr = table.insertRow(-1); // TABLE ROW.
+  tr.border
   /*
     for (var i = 0; i < col.length; i++) {
       var th = document.createElement("th"); // TABLE HEADER.
@@ -71,7 +72,7 @@ function populateHeader(jsonObj) {
 
       if (j == 5) { 
       th.colSpan = 2; 
-      th.bgColor = "pink"; 
+      //th.bgColor = "pink"; 
       th.innerHTML = "Hours Available";
       th.width = 300;
       }
@@ -79,14 +80,14 @@ function populateHeader(jsonObj) {
       
       if (j == 11) { 
         th.colSpan = 2; 
-        th.bgColor = "pink"; 
+        //th.bgColor = "pink"; 
         th.innerHTML = "Months Available (Northern Hemisphere)";
         th.width = 300;
         }
 
         if (j == 16) { 
           th.colSpan = 2; 
-          th.bgColor = "pink"; 
+          //th.bgColor = "pink"; 
           th.innerHTML = "Months Available (Southern Hemisphere)";
           th.width = 300;
           }
