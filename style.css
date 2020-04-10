@@ -54,6 +54,7 @@ table {
   width: auto;
   height: auto;
   border-collapse: collapse;
+  display: none;
 }
 
 /*
@@ -78,4 +79,8 @@ td {
 width: 75px;
 height: 75px;
 border-radius: 100%;
+}
+
+tbody {
+display: block;
 }

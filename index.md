@@ -8,16 +8,8 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
-  <script src="jquery-3.4.1.min.js"></script>
-  <script>
-    $document.ready(fuction() {
-          $("#Fish").hide();
-          $("#btnFish").click(function(){
-            $("#Fish").show();
-            });
-            
-        );
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="my-jquery.js"></script>
 </head>
 
 <body>
