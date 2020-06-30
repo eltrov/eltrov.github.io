@@ -6,6 +6,7 @@ background-color: #FCF8AD;
 	display:flex;
 	background-color: #222426;
 	font-family:Verdana;
+	height:100%;
 }
 #lbar, #rbar{
 	background-color:#507C36;
@@ -48,6 +49,7 @@ background-color: #FCF8AD;
 #content {
 	flex-grow:2;
 	color:white;
+
 }
 
 #lbar .navheader {
@@ -63,4 +65,8 @@ background-color: #FCF8AD;
 	font-weight: 900;
 	color: #104c09;
 	text-shadow: 0 0 3px #b1e689;
+}
+
+header {
+padding-bottom: 10px;	
 }
