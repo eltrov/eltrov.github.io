@@ -1,5 +1,6 @@
 body {
 background-color: #FCF8AD;
+margin:0px;
 }
 
 #wrapper {
@@ -7,6 +8,7 @@ background-color: #FCF8AD;
 	background-color: #222426;
 	font-family:Verdana;
 	height:100%;
+	width:100%;
 }
 #lbar, #rbar{
 	background-color:#507C36;
@@ -17,6 +19,27 @@ background-color: #FCF8AD;
 	flex-grow:0;
 	flex-shrink:0;
 	flex-basis: auto;
+}
+
+header {
+	border-style: ridge;
+	border-color: white;
+	/* top, right, bottom, left */
+	border-width: 0px 0px 4px 0px;
+}
+
+#lbar {
+	border-style: ridge;
+	border-color: white;
+	/* top, right, bottom, left */
+	border-width: 0px 4px 0px 0px;
+}
+
+#rbar {
+	border-style: ridge;
+	border-color: white;
+	/* top, right, bottom, left */
+	border-width: 0px 0px 0px 4px;
 }
 
 /* the below is temporary until more content gets put into the rbar */
@@ -38,8 +61,13 @@ background-color: #FCF8AD;
 	list-style-type:none;
 	margin:0;
 	padding:0;
+	
 }
 
+#lbar li, #rbar li {
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
 /* both bars - font size */
 #lbar, #rbar {
