@@ -1,3 +1,66 @@
 body {
 background-color: #FCF8AD;
 }
+
+#wrapper {
+	display:flex;
+	background-color: #222426;
+	font-family:Verdana;
+}
+#lbar, #rbar{
+	background-color:#507C36;
+	border:1px solid #111111;
+	border-top:0;
+	position:relative;
+	/*! width: auto; */
+	flex-grow:0;
+	flex-shrink:0;
+	flex-basis: auto;
+}
+
+/* the below is temporary until more content gets put into the rbar */
+#rbar {
+	flex-basis: 12%;
+}
+/* this isn't what I need but I'm amazed this worked the first try
+#rbar {
+	flex-basis: var(#lbar-flex-basis);
+}
+*/
+
+#lbar a:link, #lbar a:active, #lbar a:visited, #lbar a:hover, #lbar strong{
+	display:block;
+	color:#000000;
+	position:relative;
+}
+#lbar ul, #rbar ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+
+/* both bars - font size */
+#lbar, #rbar {
+    font-size: small;
+}
+
+#content {
+	flex-grow:2;
+	color:white;
+}
+
+#lbar .navheader {
+	font-size:16px;
+	display: block;
+	background: linear-gradient(#399b43, #7bcd3b);
+	text-align: center;
+	padding: 4px 0;
+	border-top: 1px solid #000;
+    border-top-width: 1px;
+	border-bottom: 1px solid #000;
+	font-size: 15px;
+	font-weight: 900;
+	color: #104c09;
+	text-shadow: 0 0 3px #b1e689;
+}
