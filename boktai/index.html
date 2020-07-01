@@ -8,21 +8,14 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->
-	
-	<script>
-	var pathname;
-	
-	
-	</script>
-	
+	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->	
 	
 	<script>
 	$(document).ready(function () {
 	
 	/* https://stackoverflow.com/questions/406192/get-current-url-with-jquery */
-	var pathname;
-	var url;
+	var pathname = window.location.pathname;
+	var url = window.location.href;
 	var a = $('<a>', { href: url });
 	alert(url);
 	alert(pathname);
