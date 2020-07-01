@@ -111,12 +111,6 @@ padding-bottom: 10px;
 	height:auto;
 }
 
-.link {
-	text-decoration: underline;
-	cursor: pointer;
-	display:inline
-}
-
 #quicklinks {
 	font-family: Verdana;
 }
