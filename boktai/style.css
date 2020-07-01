@@ -25,21 +25,21 @@ header {
 	border-style: ridge;
 	border-color: white;
 	/* top, right, bottom, left */
-	border-width: 0px 0px 4px 0px;
+	border-width: 0px 0px 5px 0px;
 }
 
 #lbar {
 	border-style: ridge;
 	border-color: white;
 	/* top, right, bottom, left */
-	border-width: 0px 4px 0px 0px;
+	border-width: 0px 5px 0px 0px;
 }
 
 #rbar {
 	border-style: ridge;
 	border-color: white;
 	/* top, right, bottom, left */
-	border-width: 0px 0px 0px 4px;
+	border-width: 0px 0px 0px 5px;
 }
 
 /* the below is temporary until more content gets put into the rbar */
