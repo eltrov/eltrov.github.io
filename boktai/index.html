@@ -18,7 +18,10 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	
 	<script>
 	$(document).ready(function () {
-		$("#landing").click(function() {
+		$("#home").click(function() {
+			$("#content").load("landing.html")
+			});
+		$("#banner").click(function() {
 			$("#content").load("landing.html")
 			});
 		$("#b1").click(function() {
@@ -43,13 +46,14 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 
 <!-- header magic -->
 <header>
+	<div id="banner">
 			<center>
 			<img src="images/Banner1.png" alt="BoktaiHQ Banner">
 			</center>
-	
+	</div>
 	<div id=quicklinks">
 	<b>Quick Links</b> 
-	<div id="landing" class="link">Home</a> | <a href="https://www.tapatalk.com/groups/boktaionline/" target="frame3">Forums</a> | <a href="mailto:shademan.exe@gmail.com">Contact</a> | <a href="http://discord.gg/uJRmcyk" target="_blank">Discord</a>
+	<div id="home" class="link">Home</a> | <a href="https://www.tapatalk.com/groups/boktaionline/" target="frame3">Forums</a> | <a href="mailto:shademan.exe@gmail.com">Contact</a> | <a href="http://discord.gg/uJRmcyk" target="_blank">Discord</a>
 	</div>
 </header>
 

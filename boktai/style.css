@@ -26,6 +26,7 @@ header {
 	border-color: white;
 	/* top, right, bottom, left */
 	border-width: 0px 0px 5px 0px;
+	padding: 0px 5px 0px 5px;
 }
 
 #lbar {
