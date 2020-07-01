@@ -12,9 +12,12 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	
 	<script>
 	$(document).ready(function () {
-	
 		$("#content").load("landing.html");
-
+	});
+	</script>
+	
+	<script>
+	$(document).ready(function () {
 		$("#landing").click(function() {
 			$("#content").load("landing.html")
 			});
@@ -30,7 +33,6 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 		$("#b4").click(function() {
 			$("#content").load("b4.html")
 			});
-			
 	});		
 	</script>	
 
@@ -62,10 +64,10 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 			<li class="navheader">Games</li>
 		
 		<ul>
-			<li class="link" id="b1">Boktai: The Sun is in Your Hand</li>
-			<li class="link" id="b2">Boktai 2: Solar Boy Django</li>
-			<li class="link" id="b3">Boktai 3: Sabata's Counterattack</li>
-			<li class="link" id="b4">Boktai DS | Lunar Knights</li>
+			<li id="b1" class="link">Boktai: The Sun is in Your Hand</li>
+			<li id="b2" class="link">Boktai 2: Solar Boy Django</li>
+			<li id="b3" class="link">Boktai 3: Sabata's Counterattack</li>
+			<li id="b4"class="link">Boktai DS | Lunar Knights</li>
 		</ul>
 		
 		<li class="navheader">Manga</li>
