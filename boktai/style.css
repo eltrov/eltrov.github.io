@@ -6,6 +6,7 @@ margin:0px;
 #wrapper {
 	display:flex;
 	background-color: #FCF8AD;
+	color: black;
 	font-family:Verdana;
 	height:100%;
 	width:100%;
