@@ -106,13 +106,12 @@ header {
 padding-bottom: 10px;	
 }
 
-#logo {
-	max-width:50%;
-	height:auto;
+#banner img {
+	margin:auto;
 }
 
 #logo {
-	max-width:35%;
+	max-width:50%;
 	height:auto;
 }
 
