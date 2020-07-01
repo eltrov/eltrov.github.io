@@ -24,8 +24,15 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	
 	alert(pathname);
 	
+	if(!pathname){
+	$(pathname).load(pathname + ".html");
+	});	
+
+	}
+	else {
 	$("#content").load("landing.html");
 	});
+	}
 	</script>
 	
 	<script>
