@@ -14,7 +14,10 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	$(document).ready(function () {
 	
 		$("#content").load("landing.html");
-		
+
+		$("#landing").click(function() {
+			$("#content").load("landing.html")
+			});
 		$("#b1").click(function() {
 			$("#content").load("b1.html")
 			});
@@ -38,7 +41,7 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 
 <!-- header magic -->
 <header>
-	<div id="b1">
+	<div id="landing">
 			<center>
 			<img src="images/Banner1.png" alt="BoktaiHQ Banner">
 			</center>
