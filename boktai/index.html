@@ -11,50 +11,14 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->	
 	
 	<script>
-	$(document).ready(function () {
-	
-	/* https://stackoverflow.com/questions/406192/get-current-url-with-jquery */
-	var pathname = window.location.pathname;
-	var url = window.location.href;
-	var a = $('<a>', { href: url });
-	alert(url);
-	alert(pathname);
-	alert(a.prop('query');
-	
-	/*
-	if(!pathname){
-	$(#content).load(a.prop('query') + ".html");
-	});	
 
-	}
-	else { }
-	*/
-	
-	$("#content").load("landing.html");
-	});
-	</script>
-	
-	<script>
 	$(document).ready(function () {
-		$("#home").click(function() {
-			$("#content").load("landing.html")
-			});
-		$("#banner").click(function() {
-			$("#content").load("landing.html")
-			});
-		$("#b1").click(function() {
-			$("#content").load("b1.html")
-			});
-		$("#b2").click(function() {
-			$("#content").load("b2.html")
-			});
-		$("#b3").click(function() {
-			$("#content").load("b3.html")
-			});
-		$("#b4").click(function() {
-			$("#content").load("b4.html")
-			});
-	});		
+		$("#banner").load("banner.html")
+			});	
+		$("#lbar").load("nav-bar.html")
+			});	
+		$("#rbar").load("nav-rbar.html")
+			});	
 	</script>	
 
 
@@ -63,64 +27,19 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 <body>
 
 <!-- header magic -->
-<header>
-	<div id="banner">
-			<center>
-			<img src="images/Banner1.png" alt="BoktaiHQ Banner">
-			</center>
-	</div>
-	<div id=quicklinks">
-	<b>Quick Links</b> 
-	<div id="home" class="link">Home</a> | <a href="https://www.tapatalk.com/groups/boktaionline/" target="frame3">Forums</a> | <a href="mailto:shademan.exe@gmail.com">Contact</a> | <a href="http://discord.gg/uJRmcyk" target="_blank">Discord</a>
-	</div>
-</header>
+<header id="banner"></header>
 
 
 	
 <div id="wrapper">
 
-	<nav id="lbar">
-		<ul id="lbar_ul">
-			<li class="navheader">Games</li>
-		
-		<ul>
-			<li id="b1" class="link">Boktai: The Sun is in Your Hand</li>
-			<li id="b2" class="link">Boktai 2: Solar Boy Django</li>
-			<li id="b3" class="link">Boktai 3: Sabata's Counterattack</li>
-			<li id="b4" class="link">Boktai DS | Lunar Knights</li>
-		</ul>
-		
-		<li class="navheader">Manga</li>
-			<ul>
-			<li>The First Manga</li>
-			<li>The Second Manga</li>
-			<li>The Third Manga</li>
-			</ul>
-			
-		<li class="navheader">Music</li>
-			<ul>
-			<li>The First Soundtrack</li>
-			<li>The Second Soundtrack</li>
-			<li>The Third Soundtrack</li>
-			</ul>
-		
-		<li class="navheader">Merchandise</li>
-			<ul>
-			<li>Shirts</li>
-			<li>Figures</li>
-			<li>Miscellaneous</li>
-			</ul>
-		
-		<li class="navheader">Photo Gallery</li>
-			<ul>
-		<li>Game 1</li>
-		<li>Game 2</li>
-		<li>Game 3</li>
-		
-		</ul>
-		</nav>
+	<nav id="lbar"></nav>
 	
-	<div id="content"></div>
+	<div id="content">
+	
+		<p>Welcom to the Boktai Fan Website!</p>
+		
+	</div>
 	
 	<aside id="rbar"></aside>
 	
