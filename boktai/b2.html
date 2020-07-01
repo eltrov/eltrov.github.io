@@ -1,14 +1,55 @@
+<!--
+This website is entirely for test purposes. Code is being taken from serebii.net as a means of introduction to certain new HTML and CSS elements
+-->
+
 <html>
 <head>
+	<title>BoktaiHQ - Your Source For the Sun</title>
 	<link rel="stylesheet" href="style.css">
-</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->	
+	<script>
+	$(document).ready(function () {
+		$("#banner").load("banner.html")
+		$("#lbar").load("nav-lbar.html")
+		$("#rbar").load("nav-rbar.html")
+			});	
+	</script>	
 
+
+</head>
+	
 <body>
 
-<center><img id="logo" src="images/Boktai2Logo.png"></br>
-<b>Release Information</b></br>
-JP: July 22, 2004</br>
-NA: October 19, 2004</br>
-EU: June 10, 2005</br></center>
+<!-- header magic -->
+<header id="banner"></header>
+
+
+	
+<div id="wrapper">
+
+	<nav id="lbar"></nav>
+	
+	<div id="content">
+	
+	<center>
+		<img id="logo" src="images/Boktai2Logo.png"></br>
+		<b>Release Information</b></br>
+		JP: July 22, 2004</br>
+		NA: October 19, 2004</br>
+		EU: June 10, 2005</br>
+	</center>
+		
+	</div>
+	
+	<aside id="rbar"></aside>
+	
+</div>
+
+<footer>
+</footer>
+
+
 </body>
 </html>
