@@ -22,13 +22,10 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	
 	/* https://stackoverflow.com/questions/406192/get-current-url-with-jquery */
 	var pathname;
-	
 	var url;
-	var a = $('<a>', {
-        href: url
-    });
-	
+	var a = $('<a>', { href: url });
 	alert(url);
+	alert(pathname);
 	alert(a.prop('query');
 	
 	/*
@@ -39,6 +36,7 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	}
 	else { }
 	*/
+	
 	$("#content").load("landing.html");
 	});
 	</script>
