@@ -20,12 +20,16 @@ This website is entirely for test purposes. Code is being taken from serebii.net
 	<script>
 	$(document).ready(function () {
 	
-	var pathname;
+	/* https://stackoverflow.com/questions/406192/get-current-url-with-jquery */
+	var url;
+	var a = $('<a>', {
+        href: url
+    });
 	
-	alert(pathname);
-	
+	alert(url);
+	alert(a.prop('query');
 	if(!pathname){
-	$(pathname).load(pathname + ".html");
+	$(#content).load(a.prop('query') + ".html");
 	});	
 
 	}
