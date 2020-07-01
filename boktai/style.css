@@ -114,4 +114,5 @@ padding-bottom: 10px;
 
 .link {
 	text-decoration: underline;
+	cursor: pointer;
 }
