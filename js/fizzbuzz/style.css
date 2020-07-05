@@ -1,0 +1,36 @@
+body {
+  background: white; /* try type yellow */
+  color: #323232;
+
+  margin: 0;
+
+  display: block;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: Verdana;
+}
+
+h1 {
+display:block;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ol li {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#rules {
+  display: none;
+}
+
+p {
+  margin: 0;
+}
+
+#outputList {
+  margin: 25px 0 0 0;
+}
