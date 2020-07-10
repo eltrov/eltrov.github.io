@@ -1,0 +1,32 @@
+img {
+	width: 22%;
+	/*float: left;*/
+	margin: 1%;
+	border: 1px solid black;
+
+}
+
+.pageheader {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+	font-size: 24px;
+	border-bottom: 1px solid black;
+	width: 30%;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p { 
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+	font-size: 24px;
+	width: 30%;
+	padding-top: 15px;
+	margin: 0px auto;
+}
+
+.subsection {
+	background: #C9C57A;
+	margin-top: 25px;
+}
