@@ -108,7 +108,7 @@ header {
 #lbar ul, #rbar ul{
 	list-style-type:none;
 	margin:0;
-	padding:0;
+	padding-bottom: 5px;
 	
 }
 
