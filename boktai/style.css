@@ -136,6 +136,7 @@ header {
 
 header {
 /*padding-bottom: 10px;	*/
+	background: linear-gradient(#FFF, #FCF8AD);
 }
 
 #logo {
@@ -151,8 +152,4 @@ header {
 	border: none;
 	width: auto;
 	margin: 0;
-}
-
-#banner-inner {
-	background: linear-gradient(#FFF, #FCF8AD);
 }
