@@ -135,7 +135,7 @@ header {
 }
 
 header {
-padding-bottom: 10px;	
+/*padding-bottom: 10px;	*/
 }
 
 #logo {
@@ -147,12 +147,12 @@ padding-bottom: 10px;
 	font-family: Verdana;
 }
 
-#banner img {
+#banner-inner img {
 	border: none;
 	width: auto;
 	margin: 0;
 }
 
-#banner {
+#banner-inner {
 	background: linear-gradient(#FFF, #FCF8AD);
 }
