@@ -1,9 +1,9 @@
-img {
-	width: 22%;
-	/*float: left;*/
-	margin: 1%;
-	border: 1px solid black;
-}
+.image {
+	width: 100%;
+	height: 250px;
+	background-size: cover;
+	background-position: center;
+  }
 
 .pageheader {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,4 +28,17 @@ p {
 .subsection {
 	background: #C9C57A;
 	margin-top: 25px;
+}
+
+.django1 {
+	background: url("images/b4-gallery/django1.jpg");
+}
+.django2 {
+	background-image: url("images/b4-gallery/django2.jpg");
+}
+.django3 {
+	background-image: url("images/b4-gallery/django3.jpg");
+}
+.sabata1 {
+	background-image: url("images/b4-gallery/sabata1.jpg");
 }
