@@ -1,10 +1,3 @@
-.image {
-	width: 100%;
-	height: 250px;
-	background-size: cover;
-	background-position: center;
-  }
-
 .pageheader {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	text-align: center;
@@ -27,11 +20,22 @@ p {
 
 .subsection {
 	background: #C9C57A;
-	margin-top: 25px;
+	padding: 0 25px;
+	margin: 25px;
+}
+
+.image {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	height: 300px;
+	width: 300px;
+	margin: 10px 15px;
 }
 
 .django1 {
-	background: url("images/b4-gallery/django1.jpg");
+	background-image: url("images/b4-gallery/django1.jpg");
 }
 .django2 {
 	background-image: url("images/b4-gallery/django2.jpg");
@@ -41,4 +45,16 @@ p {
 }
 .sabata1 {
 	background-image: url("images/b4-gallery/sabata1.jpg");
+}
+.sabata2 {
+	background-image: url("images/b4-gallery/sabata2.jpg");
+}
+.sabata3 {
+	background-image: url("images/b4-gallery/sabata3.jpg");
+}
+.sabata4 {
+	background-image: url("images/b4-gallery/sabata4.jpg");
+}
+.sartana1 {
+	background-image: url("images/b4-gallery/sartana1.jpg");
 }
