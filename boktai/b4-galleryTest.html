@@ -24,6 +24,19 @@
 				$("#rbar").load("nav-rbar.html")
 			});
 		</script>
+		<script>
+			// https://stackoverflow.com/questions/4588759/how-do-you-set-a-javascript-onclick-event-to-a-class-with-css#4588826
+			// https://stackoverflow.com/questions/16549137/how-to-get-the-style-value-using-attr
+			$(document).ready(function () {
+				$('div.image').click(function () {
+					var link = $(this).css("background-image");
+					window.open(link);
+					//alert(link);
+					//alert(this.css("background-image"));
+					//window.open(this.background-image);
+				});
+			});
+		</script>
 		<!-- header magic -->
 		<header id="banner"></header>
 
