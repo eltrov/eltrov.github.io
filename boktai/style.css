@@ -1,6 +1,6 @@
 body {
-background-color: #FCF8AD;
-margin:0px;
+	background-color: #FCF8AD;
+	margin: 0px;
 }
 
 header {
@@ -12,20 +12,22 @@ header {
 }
 
 #wrapper {
-	display:flex;
+	display: flex;
 	background-color: #FCF8AD;
-	font-family:Verdana;
-	height:100%;
-	width:100%;
+	font-family: Verdana;
+	height: calc(100% - 140px);
+	width: 100%;
+	position: absolute;
 }
 
-#lbar, #rbar{
-	background-color:#FCF8AD;
-	border:1px solid #111111;
-	border-top:0;
-	position:relative;
-	flex-grow:0;
-	flex-shrink:0;
+#lbar,
+#rbar {
+	background-color: #FCF8AD;
+	border: 1px solid #111111;
+	border-top: 0;
+	position: relative;
+	flex-grow: 0;
+	flex-shrink: 0;
 	flex-basis: auto;
 }
 
@@ -39,7 +41,7 @@ header {
 	flex-shrink:0;
 	flex-basis: auto;
 }
-*/ 
+*/
 
 
 /* border styling */
@@ -59,13 +61,13 @@ header {
 
 /* https://www.hexcolortool.com/#FCF8AD */
 #lbar .navheader {
-	font-size:16px;
+	font-size: 16px;
 	display: block;
 	background: linear-gradient(#FCF8AD, #C9C57A);
 	text-align: center;
 	padding: 4px 0;
 	border-top: 1px solid #000;
-    border-top-width: 1px;
+	border-top-width: 1px;
 	border-bottom: 1px solid #000;
 	font-size: 15px;
 	font-weight: 900;
@@ -94,35 +96,44 @@ header {
 #rbar {
 	flex-basis: 12%;
 }
+
 /* this isn't what I need but I'm amazed this worked the first try
 #rbar {
 	flex-basis: var(#lbar-flex-basis);
 }
 */
 
-#lbar a:link, #lbar a:active, #lbar a:visited, #lbar a:hover, #lbar strong{
-	display:block;
-	color:#000000;
-	position:relative;
-}
-#lbar ul, #rbar ul{
-	list-style-type:none;
-	margin:0;
-	padding: 0px 0px 5px 0px;	
+#lbar a:link,
+#lbar a:active,
+#lbar a:visited,
+#lbar a:hover,
+#lbar strong {
+	display: block;
+	color: #000000;
+	position: relative;
 }
 
-#lbar li, #rbar li {
+#lbar ul,
+#rbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px 0px 5px 0px;
+}
+
+#lbar li,
+#rbar li {
 	padding-left: 5px;
 	padding-right: 5px;
 }
 
 /* both bars - font size */
-#lbar, #rbar {
-    font-size: small;
+#lbar,
+#rbar {
+	font-size: small;
 }
 
 #content {
-	flex-grow:2;
+	flex-grow: 2;
 	color: black;
 	padding: 10px;
 	text-align: center;
@@ -134,13 +145,13 @@ header {
 }
 
 header {
-/*padding-bottom: 10px;	*/
+	/*padding-bottom: 10px;	*/
 	background: linear-gradient(#FFF, #FCF8AD);
 }
 
 #logo {
-	max-width:50%;
-	height:auto;
+	max-width: 50%;
+	height: auto;
 }
 
 #quicklinks {

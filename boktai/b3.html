@@ -1,55 +1,57 @@
-<!--
-This website is entirely for test purposes. Code is being taken from serebii.net as a means of introduction to certain new HTML and CSS elements
--->
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BoktaiHQ - Your Source For the Sun</title>
 	<link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/png"href="/images/favicon.png">
+	<link rel="icon" type="image/png" href="/images/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
-	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->	
+
+	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->
 	<script>
-	$(document).ready(function () {
-		$("#banner").load("banner.html")
-		$("#lbar").load("nav-lbar.html")
-		$("#rbar").load("nav-rbar.html")
-			});	
-	</script>	
+		$(document).ready(function () {
+			$("#banner").load("banner.html")
+			$("#lbar").load("nav-lbar.html")
+			$("#rbar").load("nav-rbar.html")
+		});
+	</script>
 
 
 </head>
-	
+
 <body>
 
-<!-- header magic -->
-<header id="banner"></header>
+	<!-- header magic -->
+	<header id="banner"></header>
 
 
-	
-<div id="wrapper">
 
-	<nav id="lbar"></nav>
-	
-	<div id="content">
-	
-	<center>
-		<img id="logo" src="images/Boktai3Logo.png"></br>
-		<b>Release Information</b></br>
-		JP: July 28, 2005</br>
-		<br><br>
-		<a href="shinbokguide/index.html"><img src="images/boktai3guidebutton.png" width="443px" height="263px"></a>
-	</center>
-		
+	<div id="wrapper">
+
+		<nav id="lbar"></nav>
+
+		<div id="content">
+
+			<center>
+				<img id="logo" src="images/Boktai3Logo.png"></br>
+				<b>Release Information</b></br>
+				JP: July 28, 2005</br>
+				<br><br>
+				<a href="games/shinbokguide/index.html"><img src="images/boktai3guidebutton.png" width="443px"
+						height="263px"></a>
+			</center>
+
+		</div>
+
+		<aside id="rbar"></aside>
+
 	</div>
-	
-	<aside id="rbar"></aside>
-	
-</div>
 
-<footer>
-</footer>
+	<footer>
+	</footer>
 
 </body>
+
 </html>

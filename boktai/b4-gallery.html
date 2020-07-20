@@ -1,361 +1,362 @@
-<!DOCTYPEhtml>
-	<html>
+<!DOCTYPE html>
+<html lang="en">
+<html>
 
-	<head>
-		<title>Boktai 4 Concept Art Gallery</title>
+<head>
+	<title>Boktai 4 Concept Art Gallery</title>
 
-		<link rel="icon" type="image/png" href="/images/favicon.png">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" type="text/css" href="gallery.css">
-		<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->
-	</head>
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="gallery.css">
+	<!-- https://stackoverflow.com/questions/18712338/make-header-and-footer-files-to-be-included-in-multiple-html-pages -->
+</head>
 
-	<body>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-			integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
-		</script>
-		<script>
-			$(document).ready(function () {
-				$("#banner").load("banner.html")
-				$("#lbar").load("nav-lbar.html")
-				$("#rbar").load("nav-rbar.html")
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
+	</script>
+	<script>
+		$(document).ready(function () {
+			$("#banner").load("banner.html")
+			$("#lbar").load("nav-lbar.html")
+			$("#rbar").load("nav-rbar.html")
+		});
+	</script>
+	<script>
+		// https://stackoverflow.com/questions/4588759/how-do-you-set-a-javascript-onclick-event-to-a-class-with-css#4588826
+		// https://stackoverflow.com/questions/16549137/how-to-get-the-style-value-using-attr
+		$(document).ready(function () {
+			$('div.image').click(function () {
+				var link = $(this).css("background-image");
+				var trim = link.substring(5, link.length - 2);
+				window.open(trim);
+				//alert(trim);
+				//alert(this.css("background-image"));
+				//window.open(this.background-image);
 			});
-		</script>
-		<script>
-			// https://stackoverflow.com/questions/4588759/how-do-you-set-a-javascript-onclick-event-to-a-class-with-css#4588826
-			// https://stackoverflow.com/questions/16549137/how-to-get-the-style-value-using-attr
-			$(document).ready(function () {
-				$('div.image').click(function () {
-					var link = $(this).css("background-image");
-					var trim = link.substring(5,link.length-2);
-					window.open(trim);
-					//alert(trim);
-					//alert(this.css("background-image"));
-					//window.open(this.background-image);
-				});
-			});
-		</script>
-		<!-- header magic -->
-		<header id="banner"></header>
+		});
+	</script>
+	<!-- header magic -->
+	<header id="banner"></header>
 
 
 
-		<div id="wrapper">
+	<div id="wrapper">
 
-			<nav id="lbar"></nav>
+		<nav id="lbar"></nav>
 
-			<div id="content">
-
-				
-						<h1>Boktai 4 Concept Art Gallery</h1>
-						<p>(click on a picture to see it in full-size)</p>
+		<div id="content">
 
 
-				<div class="subsection">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Protagonists</h1>
-						</div>
+			<h1>Boktai 4 Concept Art Gallery</h1>
+			<p>(click on a picture to see it in full-size)</p>
+
+
+			<div class="subsection">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Protagonists</h1>
 					</div>
-					<div class="subcontainer">
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image django1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image django2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image django3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sabata1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sabata2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sabata3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sabata4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sartana1"></div>
-							</div>
-						</div><!-- end row-->
-					</div><!-- end subcontainer-->
-				</div><!-- end subsection-->
-
-				<div class="subsection">
+				</div>
+				<div class="subcontainer">
 					<div class="row">
-						<div class="col-md-12">
-							<h1>Antagonists</h1>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image django1"></div>
 						</div>
-					</div>
-					<div class="subcontainer">
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image pork1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image pork2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image pig1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image lizardman1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image spotter1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image rymer1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image rymerarmor1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image rymerarmor2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image rymerarmor3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image rymerarmor4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image edgar1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image virginia1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image poearmor1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image poearmor2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image poearmor3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image poearmor4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stoker1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stoker2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stokerarmor1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stokerarmor2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stokerarmor3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image stokerarmor2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image dumas1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image dumas2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image dumas3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori5"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image polidori6"></div>
-							</div>
-						</div><!-- end row-->
-					</div><!-- end subcontainer-->
-				</div><!-- end subsection-->
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image django2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image django3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sabata1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sabata2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sabata3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sabata4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sartana1"></div>
+						</div>
+					</div><!-- end row-->
+				</div><!-- end subcontainer-->
+			</div><!-- end subsection-->
 
-				<div class="subsection">
+			<div class="subsection">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Antagonists</h1>
+					</div>
+				</div>
+				<div class="subcontainer">
 					<div class="row">
-						<div class="col-md-12">
-							<h1>Seireiju | Terrenials</h1>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image pork1"></div>
 						</div>
-					</div>
-					<div class="subcontainer">
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image otenko1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image nero1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image perrault1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image ursula1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image otfried1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image otfried2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image liza1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image tove1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image tove2"></div>
-							</div>
-						</div><!-- end row-->
-					</div><!-- end subcontainer-->
-				</div><!-- end subsection-->
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image pork2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image pig1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image lizardman1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image spotter1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image rymer1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image rymerarmor1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image rymerarmor2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image rymerarmor3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image rymerarmor4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image edgar1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image virginia1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image poearmor1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image poearmor2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image poearmor3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image poearmor4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stoker1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stoker2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stokerarmor1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stokerarmor2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stokerarmor3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image stokerarmor2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image dumas1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image dumas2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image dumas3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori5"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image polidori6"></div>
+						</div>
+					</div><!-- end row-->
+				</div><!-- end subcontainer-->
+			</div><!-- end subsection-->
 
-				<div class="subsection">
+			<div class="subsection">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Seireiju | Terrenials</h1>
+					</div>
+				</div>
+				<div class="subcontainer">
 					<div class="row">
-						<div class="col-md-12">
-							<h1>NPCs</h1>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image otenko1"></div>
 						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image nero1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image perrault1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image ursula1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image otfried1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image otfried2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image liza1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image tove1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image tove2"></div>
+						</div>
+					</div><!-- end row-->
+				</div><!-- end subcontainer-->
+			</div><!-- end subsection-->
+
+			<div class="subsection">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>NPCs</h1>
 					</div>
-					<div class="subcontainer">
-						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image townsfolk1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sheridan1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image sheridan2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image carmilla1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image carmilla2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image otfried2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image alice1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image alice2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image alice3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image alice4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image alice5"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image guild1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image guild2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image guild3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image laura1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image laura2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image lisbeth1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image lisbeth2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image ernest1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image ernest2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image kay1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image kay2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image beatrix1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image beatrix2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image beatrix3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image vanargand1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image jormungandr1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image hel1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image shield1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image shield2"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image shield3"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image shield4"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image irving1"></div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-								<div class="image byron1"></div>
-							</div>
-						</div><!-- end row-->
-					</div><!-- end subcontainer-->
-				</div><!-- end subsection-->
-			</div>
-
-			<aside id="rbar"></aside>
-
+				</div>
+				<div class="subcontainer">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image townsfolk1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sheridan1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image sheridan2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image carmilla1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image carmilla2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image otfried2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image alice1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image alice2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image alice3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image alice4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image alice5"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image guild1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image guild2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image guild3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image laura1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image laura2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image lisbeth1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image lisbeth2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image ernest1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image ernest2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image kay1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image kay2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image beatrix1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image beatrix2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image beatrix3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image vanargand1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image jormungandr1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image hel1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image shield1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image shield2"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image shield3"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image shield4"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image irving1"></div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="image byron1"></div>
+						</div>
+					</div><!-- end row-->
+				</div><!-- end subcontainer-->
+			</div><!-- end subsection-->
 		</div>
 
-		<footer>
-		</footer>
+		<aside id="rbar"></aside>
 
-	</body>
+	</div>
 
-	</html>
+	<footer>
+	</footer>
+
+</body>
+
+</html>
