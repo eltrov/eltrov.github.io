@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script>
+// https://www.w3schools.com/jsref/event_onload.asp
+/*
+function loadNumber() {
+    if (localStorage.clickcount) {
+    document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    }
+    else {
+    document.getElementById("result").innerHTML = "Click the button to get started!";
+    }
+}
+*/
+
+/*
+// https://www.w3schools.com/jsref/met_storage_clear.asp
+function clearNumber() {
+    localStorage.clear();
+    document.getElementById("result").innerHTML = "Click the button to get started!";
+}
+*/
+
+// https://www.w3schools.com/jsref/prop_win_localstorage.asp
+function dataConvert() {
+  calcData = [];
+  binaryDataArray = [];
+
+  calcData.push(parseInt(document.getElementById("Castle").value));
+  calcData.push(parseInt(document.getElementById("Smithy").value));
+
+  len = calcData.length;
+
+  for (i = 0;  i < len; i++) {
+     n = calcData[i]
+    n = n.toString(2);
+    n = "00000000".substr(n.length) + n;
+    binaryDataArray.push(n);
+  };
+  
+  binaryDataString = binaryDataArray.join("");
+
+  
+  document.getElementById("saveString").innerHTML = btoa(binaryDataString);
+}
+
+///////////////////////////////////////////////
+function dataDecode() {
+  var inputData = document.getElementById("loadString").value;
+  // var inputData = document.getElementById("loadString").value;
+  // innerHTML for textarea
+  // value for text box inputs
+  var decodeString = atob(inputData);
+
+  //decodeString = "0000001100110011"
+  var count = decodeString.length / 8;
+  decodedDecimalArray = []
+
+  for (i = 0; i < count; i++) {
+    decodedDecimalArray.push(decodeString.substring(decodeString.length-8,decodeString.length));
+    decodeString = decodeString.slice(0,decodeString.length-8);
+  }
+  
+  // this results in an array with the correct values, but in reverse
+  var fixedArray = [ ...decodedDecimalArray ].reverse()
+
+  decodedIntArray = []
+
+  for (i = 0; i < fixedArray.length; i++) {
+    decodedIntArray.push(parseInt(fixedArray[i],2));
+  }
+
+  document.getElementById("Castle").value = decodedIntArray[0];
+  document.getElementById("Smithy").value = decodedIntArray[1];
+
+
+}
+
+// get data from all checkboxes, save to an array
+// for each item in array, convert the int to binary and add that to a new array
+// then make one huge string from the binary array
+// and convert that to base 64?
+
+/* https://stackoverflow.com/questions/27641812/way-to-add-leading-zeroes-to-binary-string-in-javascript
+
+var n = num.toString(2);
+n = "00000000".substr(n.length) + n;
+*/
+
+</script>
+</head>
+<body>
+
+<h1>Halidom Calculator Test</h1>
+<p>
+<label>Halidom Level: </label>
+  <input type="text" id="Castle" value="" />
+</p>
+<p>  
+  <label>Smithy Level: </label>
+  <input type="text" id="Smithy" value=""  />
+</p>
+
+<p><button onclick="dataConvert()" type="button">Generate Your Save String</button></p>
+<textarea id="saveString">
+</textarea>
+
+<hr>
+<!-- <input type="text" id="loadString" value="MDAwMDAwMTEwMDExMDAxMQ==" /> -->
+<textarea id="loadString"></textarea>
+<p><button onclick="dataDecode()" type="button">Load Your Save String</button></p>
+</body>
+</html>

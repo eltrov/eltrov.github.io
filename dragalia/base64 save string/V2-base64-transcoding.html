@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script>
+
+// So... it turns out you can just natively convert a JavaScript array into Base64 and then back into a comma-separated string.
+// I was able to reduce an absurd mess of around 30 lines of nonsense binary conversion down to just three lines of actual encoding and decoding
+// Clean code is happy code :D
+function dataConvert() {
+  calcData = [];
+
+  calcData.push(parseInt(document.getElementById("Castle").value));
+  calcData.push(parseInt(document.getElementById("Smithy").value));
+  
+  document.getElementById("saveString").innerHTML = btoa(calcData);
+}
+
+
+function dataDecode() {
+  var loadString = document.getElementById("loadString").value;
+
+  // https://stackoverflow.com/questions/2858121/how-to-convert-a-comma-separated-string-to-an-array
+  var decodedArray = atob(loadString).split(",")
+
+  document.getElementById("Castle").value = decodedArray[0];
+  document.getElementById("Smithy").value = decodedArray[1];
+}
+
+</script>
+</head>
+<body>
+
+<h1>Halidom Calculator Test</h1>
+<p>
+<label>Halidom Level: </label>
+  <input type="text" id="Castle" value="" />
+</p>
+<p>  
+  <label>Smithy Level: </label>
+  <input type="text" id="Smithy" value=""  />
+</p>
+
+<p><button onclick="dataConvert()" type="button">Generate Your Save String</button></p>
+<textarea id="saveString">
+</textarea>
+
+<hr>
+<textarea id="loadString"></textarea>
+<p><button onclick="dataDecode()" type="button">Load Your Save String</button></p>
+</body>
+</html>

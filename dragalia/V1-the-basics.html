@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script>
+// https://www.w3schools.com/jsref/event_onload.asp
+function loadNumber() {
+    if (localStorage.clickcount) {
+    document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    }
+    else {
+    document.getElementById("result").innerHTML = "Click the button to get started!";
+    }
+}
+
+// https://www.w3schools.com/jsref/prop_win_localstorage.asp
+function clickCounter() {
+  if(typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+
+// https://www.w3schools.com/jsref/met_storage_clear.asp
+function resetCounter() {
+    localStorage.clear();
+    document.getElementById("result").innerHTML = "Click the button to get started!";
+}
+</script>
+</head>
+<body onload=loadNumber()>
+
+  <p><button onclick="clickCounter()" type="button">Click me!</button></p>
+  <div id="result"></div>
+  <p>Click the button to see the counter increase.</p>
+  <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+  <p><button onclick="resetCounter()" type="button">Reset Counter</button></p>
+
+</body>
+</html>

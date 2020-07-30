@@ -1,0 +1,3 @@
+check document for each object with CLASS == INPUT
+get ID
+store value of ID to localstorage.$ID
