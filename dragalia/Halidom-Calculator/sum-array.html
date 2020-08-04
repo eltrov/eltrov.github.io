@@ -4,6 +4,7 @@
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" href="style.css" type="text/css">
 
   <!-- CSS only -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -19,7 +20,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
   </script>
-
   <script>
     // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-39.php
     function tks(num) {
@@ -83,27 +83,16 @@
     //console.log(sum); // Prints: 15
   </script>
 
-  <style>
-    .row {
-
-      padding-bottom: 5px;
-    }
-
-    .container {
-      max-width: 80%;
-    }
-
-    .smithy {
-      border: 1px solid pink;
-      display: block;
-      height: 256px;
-      background: url("https://gamepedia.cursecdn.com/dragalialost_gamepedia_en/f/f3/TW02_101401_IMG_03_03.png?version=bbd872ff718d20fd633937eb1e8f5baa");
-    }
-
-    .col-lg-3 {
-      border: 1px solid black;
-    }
-  </style>
+  <script>
+    $('.bi-chevron-right').click(function(){
+      if ($(this).class = "rotated") {
+        $(this).removeClass('rotated');
+      }
+      else {
+        $(this).addClass('rotated');
+      }
+    });
+  </script>
 </head>
 
 <body onload=sumArray()>
@@ -165,32 +154,39 @@
   </nav>
 
   <div class="container">
-
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-3">
-            <span class=smithy></span>
+            <span class="halidom"></span>
+            <hr>
+            <label for="Halidom" class="col-form-label">Halidom</label>
+            <input type="text" class="form-control" id="Halidom" placeholder="1">
+          </div>
+          <div class="col-lg-3 spacer">
+            <span class=spacer></span>
+          </div>
+          <div class="col-lg-3 spacer">
+            <span class=spacer></span>
+          </div>
+          <div class="col-lg-3">
+            <span class="smithy"></span>
             <label for="exampleInputName2">Smithy</label>
             <input type="text" class="form-control" id="exampleInputName2" placeholder="1">
-          </div>
-          <div class="col-lg-3">
-            <label for="exampleInputName2">Name</label>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-          </div>
-          <div class="col-lg-3">
-            <label for="exampleInputName2">Name</label>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-          </div>
-          <div class="col-lg-3">
-            <label for="exampleInputName2">Name</label>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-sm-1 col-xs-1">
+      <div class="col-lg-12">
+        <div class="row header">
+          <p class="h1">Altars</p>
+          <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
         <div class="row">
           <div class="col-lg-3">
             <label for="exampleInputName2">Name</label>

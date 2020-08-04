@@ -1,0 +1,120 @@
+.row {
+
+    padding-bottom: 5px;
+}
+
+.container {
+    max-width: 80%;
+}
+
+
+.smithy {
+    display: block;
+    height: 128px;
+
+    background: url("images/smithy.png");
+    background-repeat: no-repeat;
+    background-size: 128px;
+    background-position: center;
+}
+
+.halidom {
+    display: block;
+    height: 128px;
+
+    background: url("images/halidom.png");
+    background-repeat: no-repeat;
+    background-size: 128px;
+    background-position: center;
+}
+
+
+.col-lg-3 {
+    border: none;
+    background: #ccc;
+    border-radius: 5px;
+    padding-bottom: 10px;
+
+}
+
+.spacer {
+    background: none;
+    /*
+    border: 1px solid black;
+    background: #ccc;
+    border-radius: 5px;
+    */
+}
+
+.header {
+    border: none;
+    background: #ccc;
+    border-radius: 5px;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+svg {
+    margin: 10px 10px 0 10px;
+}
+
+.h1 {
+    display: inline;
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.rotated {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    /* IE 9 */
+    -moz-transform: rotate(90deg);
+    /* Firefox */
+    -webkit-transform: rotate(90deg);
+    /* Safari and Chrome */
+    -o-transform: rotate(90deg);
+    /* Opera */
+}
+
+.section-container {
+    width: 400px;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 24px auto auto 1fr;
+    grid-template-columns: 120px 1fr;
+    grid-template-areas: "img name""img info""control control""mat mat";
+    grid-gap: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.section-container {
+    background: #ccc;
+}
+.sec-img {
+    grid-area: img;
+}
+
+.sec-img, img {
+   width: 100px;
+   height: auto;
+}
+
+.sec-title {
+    grid-area: name;
+}
+
+.sec-info {
+    grid-area: info;
+}
+
+.sec-control {
+    grid-area: control;
+}
+
+.sec-mat {
+    grid-area: mat;
+}
