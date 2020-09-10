@@ -1,0 +1,18 @@
+body {
+    background: #212529;
+}
+
+h1,
+h2,
+p {
+    color: #fff;
+    font-family: "Lora", "Courier New", monospace, serif;
+}
+
+#container {
+    display: none;
+}
+
+h2 {
+    display: inline;
+}
