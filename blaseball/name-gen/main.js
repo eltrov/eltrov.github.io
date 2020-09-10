@@ -481,17 +481,25 @@ var lastNames = ["Abbott",
     "Zimmerman"
 ];
 
+var teamCity = [""];
 
+var teamName = [""];
 
 function newName() {
     var lineup = document.getElementById("lineup");
     var roster = document.getElementById("roster");
+    var button = document.getElementById("button");
     var container = document.getElementById("container");
+
+    // un-hide Line and Roster sub-headings
     container.style.display = "block";
 
+    // change button text
+    button.innerText = "Again!";
 
     // clear out box after each run
-    name.innerText = "";
+    lineup.innerText = "";
+    roster.innerText = "";
 
     var fullNameList = [];
 
@@ -502,10 +510,12 @@ function newName() {
         fullNameList.push(fullName);
     }
 
+    // populating Lineup
     for (i = 0; i < 9; i++) {
         lineup.innerText += fullNameList[i];
     }
 
+    // populating Roster
     for (i = 9; i < 14; i++) {
         roster.innerText += fullNameList[i];
     }
