@@ -486,18 +486,20 @@ var teamCity = [""];
 var teamName = [""];
 
 function newName() {
-
-    // un-hide the table
+    var lineup = document.getElementById("lineup");
+    var roster = document.getElementById("roster");
+    var button = document.getElementById("button");
     var container = document.getElementById("container");
+
+    // un-hide Line and Roster sub-headings
     container.style.display = "block";
 
-    var table = document.getElementById("table");
-
     // change button text
-    var button = document.getElementById("button");
     button.innerText = "Again!";
 
     // clear out box after each run
+    lineup.innerText = "";
+    roster.innerText = "";
 
     var fullNameList = [];
 
@@ -509,12 +511,19 @@ function newName() {
     }
 
     // populating Lineup
-    for (i = 1; i < 10; i++) {
-        table.rows[i].children[0].children[0].innerText = fullNameList[i - 1];
+    for (i = 0; i < 9; i++) {
+        lineup.innerText += fullNameList[i];
     }
 
-    // populating Rotation
-    for (i = 9; i < 15; i++) {
-        table.rows[i + 2].children[0].children[0].innerText = fullNameList[i];
+    // populating Roster
+    for (i = 9; i < 14; i++) {
+        roster.innerText += fullNameList[i];
     }
+
+    //name.innerText = fullNameList;
+
+    //alert(firstNames[rngFirst] + " " + lastNames[rngLast]);
+
+    //name.innerText = firstNames[rngFirst] + " " + lastNames[rngLast];
+    //console.log(firstNames[rngFirst] + " " + lastNames[rngLast]);
 }

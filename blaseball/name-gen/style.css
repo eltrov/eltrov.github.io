@@ -1,6 +1,7 @@
 body {
     background: #000;
     /*background: #212529;*/
+    text-align: center;
 }
 
 h1,
@@ -14,6 +15,39 @@ p {
     display: none;
 }
 
-h2 {
+.header {
+    color: #aaa;
     display: inline;
+}
+
+table {
+    border: 1px solid white;
+    text-align: center;
+    border-spacing: 0xp;
+    width: 400px;
+    margin: auto;
+}
+
+p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 18px;
+}
+
+.one {
+    background: #111;
+}
+
+.two {
+    background: #000;
+}
+
+td,
+th {
+    height: 30px;
+    padding: 5px;
+}
+
+table tr:nth-child(even) {
+    background: #111;
 }
