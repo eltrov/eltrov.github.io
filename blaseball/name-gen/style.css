@@ -6,7 +6,7 @@ body {
 
 h1,
 h2,
-p {
+p,a {
     color: #fff;
     font-family: "Lora", "Courier New", monospace, serif;
 }
@@ -64,4 +64,26 @@ table tr:nth-child(even) {
     display: inline-block;
     margin-left: 15px;
     margin-bottom: 30px;
+}
+
+.page-header {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 60px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #222426;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+a, a:visited {
+    color:#fff;
+    text-decoration: none;
 }
