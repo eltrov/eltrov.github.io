@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blaseball Name Generator</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" > 
+        window.glob = "global variable";
+    </script>
+    <script type="text/javascript" src="names.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet"> 
 </head>
@@ -16,6 +20,12 @@
     <button id="button" onclick="newName();">Click me to generate a roster!</button>
 
     <div id="container">
+        <br>
+            <div id="team-logo">
+            </div>
+            <h1 id="team-name"></h1>
+            
+            
         <br>
         <table id="table">
             <th>

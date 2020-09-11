@@ -18,6 +18,7 @@ p {
 .header {
     color: #aaa;
     display: inline;
+    font-weight: normal;
 }
 
 table {
@@ -34,20 +35,33 @@ p {
     font-size: 18px;
 }
 
-.one {
-    background: #111;
-}
-
-.two {
-    background: #000;
-}
-
-td,
 th {
-    height: 30px;
+    height: 40px;
     padding: 5px;
 }
 
+td {
+    height: 20px;
+    padding: 5px;
+}
+
+
 table tr:nth-child(even) {
     background: #111;
+}
+
+#team-logo {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#team-name {
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 30px;
 }
