@@ -1,0 +1,29 @@
+Nickname,Emoji:
+Dougnuts,🍩
+Tengu,👺
+Honeybees,🐝
+Gamers,🕹️
+Moai,🗿
+Punks,🧷
+Miners,⛏️
+Brainiacs,🧠
+
+==========================
+Teams w/o emoji:
+Trapdoors
+Firewall
+Yeti
+Pirates
+Ninjas
+Vikings
+Knights?
+==========================
+Cities/Countries:
+Phoenix
+Madagascar
+Easter Island
+Zanzibar
+Morocco
+Chile
+Tampa Bay
+==========================
