@@ -46,7 +46,6 @@ td {
     padding: 5px;
 }
 
-
 table tr:nth-child(even) {
     background: #111;
 }
@@ -67,10 +66,42 @@ table tr:nth-child(even) {
     margin-bottom: 30px;
 }
 
+
+/* #beta h1*/
+
 .page-header {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 60px;
+    display: block;
+    margin: 0;
+}
+
+header {
+    /*position: absolute;
+    */
+}
+
+#beta {
+    /* fixed position stuff */
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    /* other formatting */
+    padding: 2px 5px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: hsla(0, 0%, 39.6%, .65098);
+    display: inline;
+}
+
+#beta p {
+    text-transform: uppercase;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    display: inline;
 }
 
 footer {
