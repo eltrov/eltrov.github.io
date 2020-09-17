@@ -42,6 +42,7 @@
         "Cedric",
         "Cell",
         "Chambers",
+        "Charlatan",
         "Chorby",
         "Christian",
         "Collins",
