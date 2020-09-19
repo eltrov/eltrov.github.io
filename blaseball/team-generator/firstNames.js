@@ -39,6 +39,7 @@
         "Campos",
         "Cannonball",
         "Carmelo",
+        "Case",
         "Castillo",
         "Cedric",
         "Cell",
