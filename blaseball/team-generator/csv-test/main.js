@@ -4,7 +4,7 @@ function loadCSV() {
     var firstNames = new Array;
     $.get('firstNames.csv', function(data){
             var array = data.split('\n');
-            console.log(cardRules);
+            console.log(firstNames);
         });
 
 
