@@ -1,16 +1,38 @@
+/*
 function loadCSV() {
     // jQuery stuff goes here
 
-    var firstNames = new Array;
+    let firstNames = new Array;
     $.get('firstNames.txt', function (data) {
         firstNames = data.split('\n');
         console.log(firstNames);
     });
 
+    let lastNames = new Array;
+    $.get('lastNames.txt', function (data) {
+        lastNames = data.split('\n');
+        console.log(firstNames);
+    });
 
 }
-
+*/
 function newName() {
+
+    if(!firstNames) {
+        var firstNames = new Array;
+        $.get('firstNames.txt', function (data) {
+            firstNames = data.split('\n');
+            console.log(firstNames);
+        }); 
+    }
+
+    if(!lastNames) {
+        var lastNames = new Array;
+        $.get('lastNames.txt', function (data) {
+            lastNames = data.split('\n');
+            console.log(firstNames);
+        });
+    }
 
     // un-hide the table
     var container = document.getElementById("container");
