@@ -2,10 +2,10 @@ function loadCSV() {
     // jQuery stuff goes here
 
     var firstNames = new Array;
-    $.get('firstNames.txt', function(data){
-            var array = data.split('\n');
-            console.log(firstNames);
-        });
+    $.get('firstNames.txt', function (data) {
+        firstNames = data.split('\n');
+        console.log(firstNames);
+    });
 
 
 }
