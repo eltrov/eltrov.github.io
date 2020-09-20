@@ -32,7 +32,7 @@ if(!lastNames) {
     var lastNames = new Array;
     $.get('lastNames.txt', function (data) {
         lastNames = data.split('\n');
-        console.log(firstNames);
+        console.log(lastNames);
     });
 }
 
