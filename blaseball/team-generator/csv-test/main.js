@@ -1,45 +1,18 @@
-/*
-function loadCSV() {
-    // jQuery stuff goes here
-
-    let firstNames = new Array;
-    $.get('firstNames.txt', function (data) {
-        firstNames = data.split('\n');
-        console.log(firstNames);
-    });
-
-    let lastNames = new Array;
-    $.get('lastNames.txt', function (data) {
-        lastNames = data.split('\n');
-        console.log(firstNames);
-    });
-
-}
-*/
-
 // global stuff
 // (scope/context is all new-ish to me)
+var firstNames = new Array;
+$.get('firstNames.txt', function (data) {
+    firstNames = data.split('\n');
+    console.log(firstNames);
+});
 
-if(!firstNames) {
-    var firstNames = new Array;
-    $.get('firstNames.txt', function (data) {
-        firstNames = data.split('\n');
-        console.log(firstNames);
-    }); 
-}
-
-if(!lastNames) {
-    var lastNames = new Array;
-    $.get('lastNames.txt', function (data) {
-        lastNames = data.split('\n');
-        console.log(lastNames);
-    });
-}
+var lastNames = new Array;
+$.get('lastNames.txt', function (data) {
+    lastNames = data.split('\n');
+    console.log(lastNames);
+});
 
 function newName() {
-
-
-
     // un-hide the table
     var container = document.getElementById("container");
     container.style.display = "block";
