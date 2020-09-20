@@ -1,5 +1,18 @@
-function newName() {
+// global stuff
+// (scope/context is all new-ish to me)
+var firstNames = new Array;
+$.get('firstNames.txt', function (data) {
+    firstNames = data.split('\n');
+    console.log(firstNames);
+});
 
+var lastNames = new Array;
+$.get('lastNames.txt', function (data) {
+    lastNames = data.split('\n');
+    console.log(lastNames);
+});
+
+function newName() {
     // un-hide the table
     var container = document.getElementById("container");
     container.style.display = "block";
