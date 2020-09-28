@@ -19,17 +19,25 @@ $.get('lastNames.txt', function (data) {
     //console.log(lastNames);
 });
 
+// table starts hidden, gets un-hidden when button is pressed
+var container = document.getElementById("container");
+
+// variable-izing the table so we can add children later
+var table = document.getElementById("table");
+
+// change button text after clicking it once
+var button = document.getElementById("button");
+
+// Start Main Function here
 function newName() {
-    // table starts hidden, gets un-hidden when button is pressed
-    var container = document.getElementById("container");
+
     container.style.display = "block";
 
-    // variable-izing the table so we can add children later
-    var table = document.getElementById("table");
-
-    // change button text after clicking it once
-    var button = document.getElementById("button");
-    button.innerText = "Again!";
+    if (button.innerHTML == "Again!") {
+        // do(nothing);
+    } else {
+        button.innerText = "Again!";
+    }
 
     // clear out the array after each run
     var fullNameList = [];
