@@ -1,37 +1,41 @@
-// global stuff
-// (scope/context is all new-ish to me)
+// run on body load
+function main() {
 
-// jQuery function to read/get from data
-// https://www.sitepoint.com/jquery-read-text-file/
-// https://api.jquery.com/jQuery.get/
+    // global stuff
+    // (scope/context is all new-ish to me)
 
-function main(){
-let firstNames = new Array;
-$.get('firstNames.txt', function (data) {
-    // reads from file, splitting array entries on line breaks
-    firstNames = data.split('\n');
-    //console.log(firstNames);
-});
+    // jQuery function to read/get from data
+    // https://www.sitepoint.com/jquery-read-text-file/
+    // https://api.jquery.com/jQuery.get/
 
-let lastNames = new Array;
-$.get('lastNames.txt', function (data) {
-    // reads from file, splitting array entries on line breaks
-    lastNames = data.split('\n');
-    //console.log(lastNames);
-});
+    var firstNames = new Array;
+    $.get('firstNames.txt', function (data) {
+        // reads from file, splitting array entries on line breaks
+        firstNames = data.split('\n');
+        //console.log(firstNames);
+    });
 
-// table starts hidden, gets un-hidden when button is pressed
-var container = document.getElementById("container");
+    var lastNames = new Array;
+    $.get('lastNames.txt', function (data) {
+        // reads from file, splitting array entries on line breaks
+        lastNames = data.split('\n');
+        //console.log(lastNames);
+    });
 
-// variable-izing the table so we can add children later
-var table = document.getElementById("table");
+    // table starts hidden, gets un-hidden when button is pressed
+    var container = document.getElementById("container");
 
-// change button text after clicking it once
-var button = document.getElementById("button");
+    // variable-izing the table so we can add children later
+    var table = document.getElementById("table");
 
-newName(firstNames, lastNames);
+    // change button text after clicking it once
+    var button = document.getElementById("button");
+
+    newName(firstNames, lastNames);
+
 }
-// Start Main Function here /////////////////////////////////////////
+
+// run on button click
 function newName(firstNames, lastNames) {
 
     container.style.display = "block";
@@ -51,16 +55,6 @@ function newName(firstNames, lastNames) {
         var fullName = firstNames[rngFirst] + " " + lastNames[rngLast] + "\n";
         fullNameList.push(fullName);
         //console.log(fullNameList);
-    }
-
-    // populating Lineup
-    for (i = 0; i < 9; i++) {
-        table.rows[i + 1].children[0].children[0].innerText = fullNameList[i];
-    }
-
-    // populating Rotation
-    for (i = 9; i < 14; i++) {
-        table.rows[i + 2].children[0].children[0].innerText = fullNameList[i];
     }
 
     var rngCity = Math.floor(Math.random() * Math.floor(teamCity.length));
