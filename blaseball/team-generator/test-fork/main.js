@@ -6,14 +6,14 @@
 // https://api.jquery.com/jQuery.get/
 
 function main(){
-var firstNames = new Array;
+let firstNames = new Array;
 $.get('firstNames.txt', function (data) {
     // reads from file, splitting array entries on line breaks
     firstNames = data.split('\n');
     //console.log(firstNames);
 });
 
-var lastNames = new Array;
+let lastNames = new Array;
 $.get('lastNames.txt', function (data) {
     // reads from file, splitting array entries on line breaks
     lastNames = data.split('\n');
