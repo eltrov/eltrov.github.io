@@ -20,21 +20,16 @@ $.get('lastNames.txt', function (data) {
 });
 
 // table starts hidden, gets un-hidden when button is pressed
-var container = document.getElementById("container");
+let container = document.getElementById("container");
 
 // variable-izing the table so we can add children later
-var table = document.getElementById("table");
+let table = document.getElementById("table");
 
 // change button text after clicking it once
-var button = document.getElementById("button");
+let button = document.getElementById("button");
 
 // Start Main Function here /////////////////////////////////////////
 function newName() {
-
-    // this is weird
-    var container;
-    var table; 
-    var button;
 
     container.style.display = "block";
 
