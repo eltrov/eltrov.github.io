@@ -29,7 +29,7 @@ var table = document.getElementById("table");
 // change button text after clicking it once
 var button = document.getElementById("button");
 
-newName();
+newName(firstNames, lastNames);
 }
 // Start Main Function here /////////////////////////////////////////
 function newName() {
@@ -79,4 +79,6 @@ function newName() {
 
     var teamNameHeader = document.getElementById("team-name");
     teamNameHeader.innerText = fullTeamName;
+
+    return null;
 }
