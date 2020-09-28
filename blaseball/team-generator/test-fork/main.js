@@ -5,6 +5,7 @@
 // https://www.sitepoint.com/jquery-read-text-file/
 // https://api.jquery.com/jQuery.get/
 
+function main(){
 var firstNames = new Array;
 $.get('firstNames.txt', function (data) {
     // reads from file, splitting array entries on line breaks
@@ -20,14 +21,16 @@ $.get('lastNames.txt', function (data) {
 });
 
 // table starts hidden, gets un-hidden when button is pressed
-let container = document.getElementById("container");
+var container = document.getElementById("container");
 
 // variable-izing the table so we can add children later
-let table = document.getElementById("table");
+var table = document.getElementById("table");
 
 // change button text after clicking it once
-let button = document.getElementById("button");
+var button = document.getElementById("button");
 
+newName();
+}
 // Start Main Function here /////////////////////////////////////////
 function newName() {
 
