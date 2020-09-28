@@ -32,7 +32,7 @@ var button = document.getElementById("button");
 newName(firstNames, lastNames);
 }
 // Start Main Function here /////////////////////////////////////////
-function newName() {
+function newName(firstNames, lastNames) {
 
     container.style.display = "block";
 
