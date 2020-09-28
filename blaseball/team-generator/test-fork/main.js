@@ -30,14 +30,13 @@ function main() {
 
     // change button text after clicking it once
     var button = document.getElementById("button");
-
-    newName(firstNames, lastNames);
-
 }
 
 // run on button click
-function newName(firstNames, lastNames) {
+function newName() {
 
+    main();
+    
     container.style.display = "block";
 
     if (button.innerHTML == "Again!") {
