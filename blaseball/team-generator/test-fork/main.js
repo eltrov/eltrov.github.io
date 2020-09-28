@@ -28,8 +28,13 @@ var table = document.getElementById("table");
 // change button text after clicking it once
 var button = document.getElementById("button");
 
-// Start Main Function here
+// Start Main Function here /////////////////////////////////////////
 function newName() {
+
+    // this is weird
+    var container;
+    var table; 
+    var button;
 
     container.style.display = "block";
 
