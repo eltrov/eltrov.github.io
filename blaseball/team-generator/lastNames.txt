@@ -59,6 +59,7 @@ Day
 Delacruz
 Dennis
 Destiny
+Di Batterino
 Doctor
 Dogwalker
 Dollie
@@ -68,6 +69,7 @@ Dreamy
 Dudley
 Duende
 Duffy
+Dumpington
 Elftower
 Elliott
 England
@@ -76,12 +78,14 @@ Escobar
 Estes
 Familia
 Fantastic
+Fenestrate
 Fig
 Figueroa
 Fischer
 Forbes
 Fox
 Franklin
+Galvanic
 Garbage
 Garcia
 Garner
@@ -107,6 +111,7 @@ Henderson
 Herman
 Hess
 Hildebert
+Hitherto
 Holloway
 Hollywood
 Horne
@@ -121,6 +126,7 @@ James
 Javier
 Jaylee
 Johnson
+Jokes
 Jonbois
 Karim
 Kath
@@ -140,6 +146,7 @@ Lotus
 Machine
 Maldonado
 Manco
+Mandible
 Marijuana
 Marshallow
 Mason
@@ -149,6 +156,7 @@ Maybe
 McBlase
 Mccall
 Mcdaniel
+McGhee
 Meadows
 Meh
 Melcon
@@ -175,6 +183,7 @@ Oconnor
 Olive
 Owens
 Pacheco
+Pantheocide
 Parra
 Passon
 Patterson
@@ -188,6 +197,7 @@ Poole
 Pothos
 Prestige
 Preston
+Puddles
 Quitter
 Ramsey
 Rangel
@@ -216,12 +226,15 @@ Scott
 Seabrigh
 Seagull
 Septemberish
+Seraph
+Serotonin
 Shelton
 Shmurmgle
 Short
 Silk
 Simmons
 Sky
+Slumps
 Solis
 Soul
 Spaceman
@@ -232,6 +245,7 @@ Spruce
 Stanton
 Steakknife
 Stink
+Strongbody
 Summer
 Sunshine
 Suzanne
@@ -256,8 +270,8 @@ Violence
 Violet
 Voorhees
 Wallace
-Wanderlust
 Walton
+Wanderlust
 Washington
 Watson
 Weatherman
@@ -275,13 +289,14 @@ Woodman
 Woods
 Wright
 Yamamoto
-Zavala
-Zimmerman
 Yong
 York
 Yosh
 Zack
+Zavala
 Zeboriah
+Zephyr
 Zi
+Zimmerman
 Zion
 Ziwa

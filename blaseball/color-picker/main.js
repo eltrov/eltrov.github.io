@@ -10,7 +10,7 @@ function main() {
         var teamLogo = document.createElement("div");
         teamLogo.className = "team-logo";
         teamLogo.style = "background-color:" + code + ";";
-        teamLogo.innerText = "🧠";
+        teamLogo.innerText = "🦄";
         (document.getElementById("palette")).appendChild(teamLogo)
     }
 }

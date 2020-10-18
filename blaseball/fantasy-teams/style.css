@@ -128,3 +128,35 @@ Team Colors - load as separate css?
 #null {
     background-color: rgb(153, 153, 153);
 }
+
+#camel {
+    background-color: rgb(143, 60, 61);
+}
+
+#dragon {
+    background-color: rgb(72, 76, 208);
+}
+
+#plumber {
+    background-color: rgb(210, 205, 211);
+}
+
+#alien {
+    background-color: rgb(167, 242, 206);
+}
+
+#bomb {
+    background-color: rgb(40, 66, 119);
+}
+
+#skeleton {
+    background-color: rgb(21, 233, 237);
+}
+
+#robot {
+    background-color: rgb(186, 29, 50);
+}
+
+#unicorn {
+    background-color: rgb(254, 120, 185);
+}
