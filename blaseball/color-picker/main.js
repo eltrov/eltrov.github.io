@@ -2,15 +2,16 @@ function main() {
     var br = document.createElement("br");
     br.className = "break";
 
-    var count = 9780;
-
+    var count = 800;
+    // multiples of 16 on 3440x1440
+    //var count = prompt("How many colors do you want to generate?");
 
     for (i = 0; i < count; i++) {
         var code = makeCode();
         var teamLogo = document.createElement("div");
         teamLogo.className = "team-logo";
         teamLogo.style = "background-color:" + code + ";";
-        teamLogo.innerText = "🦄";
+        teamLogo.innerText = code;
         (document.getElementById("palette")).appendChild(teamLogo)
     }
 }
