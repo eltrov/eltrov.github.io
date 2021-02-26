@@ -1,0 +1,33 @@
+body {
+    background: #000;
+    /*background: #212529;*/
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    font-family: "Lora", "Courier New", monospace, serif;
+}
+
+.page-header {
+    font-weight: 700;
+    font-size: 60px;
+    margin: 10px 0px;
+    text-shadow: 0 0 4px white;
+}
+
+.team-logo {
+    height: 6px;
+    width: 6px;
+    display: inline-flex;
+    margin: 0px;
+}
+
+.team-name {
+    display: inline-block;
+    margin: 0px;
+}
+
+.palette {
+    line-height: 0;
+}
