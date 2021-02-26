@@ -8,13 +8,13 @@ function main() {
     var pCount = 0;
 
     // 64 x 64
-    var count = 4096;
+    //var count = 4096;
 
     // 128 x 128
-    //var count = 16384;
+    var count = 16384;
 
     // 256 x 256
-    // var count = 65536;
+    //var count = 65536;
     
     var headerCode = makeCode();
     var h1 = document.getElementsByTagName("H1")[0];
