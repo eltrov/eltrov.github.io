@@ -1,0 +1,58 @@
+body {
+    background: #000;
+    /*background: #212529;*/
+    text-align: center;
+}
+
+h1,
+h2,
+p,
+a {
+    color: #fff;
+    font-family: "Lora", "Courier New", monospace, serif;
+}
+
+.page-header {
+    font-weight: 700;
+    font-size: 60px;
+    display: block;
+    margin: 0;
+}
+
+ul, li {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+.content {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.specialContent {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    max-width: 550px;
+    text-align: center;
+}
+
+.specialContent a {
+    font-size: 22px;
+    font-style: bold;
+}
+
+p {
+    font-size: 18px;
+}
+
+br {
+    margin-bottom: 1em;
+}
+
+hr {
+    margin-bottom: 1em;
+}
