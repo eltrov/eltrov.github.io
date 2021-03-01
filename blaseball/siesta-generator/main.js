@@ -1,6 +1,6 @@
 function main() {
     var boxElement  = document.getElementById("textArea");
-    boxElement.value = "";
+    boxElement.value = "Enter your new bottom text here...";
 }
 
 function swapText() {
