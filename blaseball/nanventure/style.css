@@ -49,7 +49,7 @@ h2 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+    margin: 10px;
 }
 
 #roster {
@@ -135,21 +135,32 @@ table.history {
     border-collapse: collapse;  
 }
 
+thead p {
+    
+}
+
+/*
 td {
     border: 2px solid #fff;
     min-width: 100px;
 }
+*/
 
 .bigSpace {
     line-height: 5em;
 }
 
-#tHeader h2 {
+#tHeader {
     text-align: center;
     color: #fff;
     font-size: 32px;
-    margin: 5px;
+    margin: 15px auto;
 }
+
+tbody tr:nth-child(odd) {
+    background: rgba(30, 30, 30, .64);
+}
+
 /*
 Team Colors - load as separate css?
 
