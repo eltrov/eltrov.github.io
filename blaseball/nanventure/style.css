@@ -4,7 +4,8 @@ body {
     text-align: center;
 }
 
-h1 {
+h1,
+td {
     color: #fff;
     font-family: "Lora", "Courier New", monospace, serif;
     text-align: center;
@@ -38,6 +39,17 @@ h2 {
     justify-content: center;
     align-items: center;
     margin-left: 20px;
+}
+
+.team-logo-small {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
 }
 
 #roster {
@@ -93,6 +105,12 @@ li:nth-child(even) {
     background-color: transparent !important;
 }
 
+p {
+    background-color: transparent !important;
+    font-size: 22px;
+    margin: 5px;
+}
+
 table {
     margin: auto;
 }
@@ -111,6 +129,26 @@ table {
     margin-left: -75px;
     margin-top: 0px;
     font-size: 60px;
+}
+
+table.history {
+    border-collapse: collapse;  
+}
+
+td {
+    border: 2px solid #fff;
+    min-width: 100px;
+}
+
+.bigSpace {
+    line-height: 5em;
+}
+
+#tHeader h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 32px;
+    margin: 5px;
 }
 /*
 Team Colors - load as separate css?
@@ -136,7 +174,11 @@ Team Colors - load as separate css?
 
 #fridays {
     background: rgb(62, 230, 82);
-    color: rgb(62, 230, 82)
+    color: rgb(62, 230, 82);
+}
+
+div#fridays {
+    color: unset;
 }
 
 #garages {
@@ -176,7 +218,11 @@ Team Colors - load as separate css?
 
 #moist-talkers {
     background: rgb(245, 254, 255);
-    color: rgb(245, 254, 255)
+    color: rgb(245, 254, 255);
+}
+
+div#moist-talkers {
+    color: unset;
 }
 
 #pies {
