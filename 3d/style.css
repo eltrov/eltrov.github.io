@@ -1,0 +1,26 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+h1, h2{
+    font-family: 'Lora', 'Courier New', monospace, serif;
+    font-size: 72px;
+    color: white;
+    text-shadow: rgba(255,0,0,0.5) -2px -2px 0px, rgba(0,255,255,0.5) 2px 2px 0px;
+}
+
+#main {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    height: 100%; /* use 100% of the page space */
+}
