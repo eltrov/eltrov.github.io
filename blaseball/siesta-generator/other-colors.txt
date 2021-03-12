@@ -1,0 +1,24 @@
+#workskin .monitor {
+  text-align: center;
+  color: #5988ff;
+  text-shadow: 0 0 0.625em #5988ff;
+  font-family: "Lora",serif;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#workskin .peanut {
+  text-align: center;
+  color: red;
+  font-family: "Lora",serif;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#workskin .coin {
+  text-align: center;
+  color: #edc314;
+  font-family: "Lora",serif;
+  font-size: 150%;
+  font-weight: bold;
+}
