@@ -15,10 +15,7 @@
 <body onLoad="main()">
 
     <div class="Main">
-        <div class="SleepyTime">
-            <!--
-            <img src="taco-baco.PNG">
-        -->
+        <div id="siesta" class="siesta">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" style="width: 100px; margin-right: 80px">
                 <g class="" transform="translate(-65,75)" style="touch-action: none;">
                     <g>
@@ -42,6 +39,16 @@
                 </g>
             </svg>
         </div>
+        <div id="peanut" class="content hidden">
+            <img class="spin" src="shelled-one.jpg">
+        </div>
+        <div id="monitor" class="content invert hidden">
+            <img class="monitor" src="squid.svg">
+        </div>
+        <div id="boss" class="content hidden">
+            <img id="boss" src="boss.png">
+        </div>
+
     </div>
 
     <div class="specialContent">
@@ -49,6 +56,15 @@
     </div>
     <br><br>
     <hr>
+    <br><br>
+    <div class="content">
+    <select name="type" id="type">
+        <option value="siesta">Siesta</option>
+        <option value="peanut">The Shelled One</option>
+        <option value="monitor">The Hall Monitor</option>
+        <option value="boss">Boss</option>
+    </select> 
+</div>
     <br><br>
     <div class="content">
             <textarea id="textArea">Enter your new bottom text here.</textarea>
