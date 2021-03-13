@@ -7,7 +7,8 @@ body {
 h1,
 h2,
 p,
-a {
+a,
+table * {
     color: #fff;
     font-family: "Lora", "Courier New", monospace, serif;
 }
