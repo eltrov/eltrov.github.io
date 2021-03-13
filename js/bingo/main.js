@@ -5,7 +5,7 @@
 // https://www.sitepoint.com/jquery-read-text-file/
 // https://api.jquery.com/jQuery.get/
 
-var bingo = new Array;
+var bingoBackup = new Array;
 $.get('bingo.txt', function (data) {
     // reads from file, splitting array entries on line breaks
     bingo = data.split('\n');
@@ -13,6 +13,8 @@ $.get('bingo.txt', function (data) {
 });
 
 function newName() {
+
+    var bingo = bingoBackup;
 
     // table starts hidden, gets un-hidden when button is pressed
     var container = document.getElementById("container");
