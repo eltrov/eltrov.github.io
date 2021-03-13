@@ -1,0 +1,5 @@
+make each div clickable to mark cells as completed
+randomize free space
+>images of jerma
+>stream's late
+>stream's early

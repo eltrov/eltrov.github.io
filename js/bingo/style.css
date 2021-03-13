@@ -1,5 +1,5 @@
 body {
-    background: #d2d4d6;
+    background: #dddbd9;
     /*background: #212529;*/
     text-align: center;
 }
@@ -10,16 +10,10 @@ h6,
 p,
 a,
 table * {
-    color: #d2d4d6;
-    filter: invert(100%);
+    color: #222426;
     font-family: "Lora", "Courier New", monospace, serif;
 }
 
-.header {
-    color: #aaa;
-    display: inline;
-    font-weight: normal;
-}
 
 header {
     margin-bottom: 25px;
@@ -38,11 +32,6 @@ p {
     align-items: center;
 }
 
-.container {
-    /*  test */
-}
-
-
 table {
     text-align: center;
     border-spacing: 0xp;
@@ -57,7 +46,7 @@ p {
 }
 
 table, td {
-    border: 3px solid #000;
+    border: 3px solid #222426;
     border-collapse: collapse;
     table-layout: fixed;
 }
@@ -69,5 +58,5 @@ td {
 }
 
 button {
-    border: 3px solid black;
+    border: 3px solid #222426;
 }
