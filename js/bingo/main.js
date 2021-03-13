@@ -1,6 +1,3 @@
-// global stuff
-// (scope/context is all new-ish to me)
-
 // jQuery function to read/get from data
 // https://www.sitepoint.com/jquery-read-text-file/
 // https://api.jquery.com/jQuery.get/
@@ -12,15 +9,10 @@ $.get('bingo.txt', function (data) {
     //console.log(bingo);
 });
 
-var bingo = new Array;
-
 function newName() {
-
+    // you must define the source type when trying to clone an array
+    // var bingo = bingoBackup DOES NOT WORK
     var bingo = [...bingoBackup];
-
-    // table starts hidden, gets un-hidden when button is pressed
-    var container = document.getElementById("container");
-    container.style.display = "block";
 
     // change button text after clicking it once
     var button = document.getElementById("button");
