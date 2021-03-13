@@ -12,6 +12,8 @@ $.get('bingo.txt', function (data) {
     //console.log(bingo);
 });
 
+var bingo = new Array;
+
 function newName() {
 
     var bingo = bingoBackup;
@@ -19,9 +21,6 @@ function newName() {
     // table starts hidden, gets un-hidden when button is pressed
     var container = document.getElementById("container");
     container.style.display = "block";
-
-    // variable-izing the table so we can add children later
-    var table = document.getElementById("table");
 
     // change button text after clicking it once
     var button = document.getElementById("button");
