@@ -14,7 +14,6 @@ table * {
     font-family: "Lora", "Courier New", monospace, serif;
 }
 
-
 header {
     margin-bottom: 25px;
 }
@@ -22,7 +21,6 @@ header {
 .page-header {
     display: inline;
     margin-bottom: 10px;
-
 }
 
 p {
@@ -45,7 +43,8 @@ p {
     font-size: 18px;
 }
 
-table, td {
+table,
+td {
     border: 3px solid #222426;
     border-collapse: collapse;
     table-layout: fixed;
@@ -54,9 +53,20 @@ table, td {
 td {
     width: 150px;
     height: 150px;
-
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 button {
     border: 3px solid #222426;
+}
+
+.checked {
+    background: rgba(0, 59, 213, 0.3);
+    border-radius: 50%;
 }
