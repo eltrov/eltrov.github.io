@@ -8,7 +8,7 @@
 var bingoBackup = new Array;
 $.get('bingo.txt', function (data) {
     // reads from file, splitting array entries on line breaks
-    bingo = data.split('\n');
+    bingoBackup = data.split('\n');
     //console.log(bingo);
 });
 
