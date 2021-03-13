@@ -16,7 +16,7 @@ var bingo = new Array;
 
 function newName() {
 
-    var bingo = bingoBackup;
+    var bingo = [...bingoBackup];
 
     // table starts hidden, gets un-hidden when button is pressed
     var container = document.getElementById("container");
