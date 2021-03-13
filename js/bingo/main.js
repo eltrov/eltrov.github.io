@@ -3,11 +3,19 @@
 // https://api.jquery.com/jQuery.get/
 
 var bingoBackup = new Array;
-$.get('bingo.txt', function (data) {
+$.get('bingo.txt', function(data) {
     // reads from file, splitting array entries on line breaks
     bingoBackup = data.split('\n');
     //console.log(bingo);
 });
+
+function main() {
+
+    for (i = 0; i < 24; i++) {
+        var id = (document.getElementById(i));
+        id.setAttribute("onclick", "clickMe(this.id)");
+    }
+}
 
 function newName() {
     // you must define the source type when trying to clone an array
@@ -25,5 +33,14 @@ function newName() {
         (document.getElementById(i)).innerText = bingo[rng];
 
         bingo.splice(rng, 1);
+    }
+}
+
+function clickMe(clicked_id) {
+    var clicked = (document.getElementById(clicked_id))
+    if (!clicked.className) {
+        clicked.className = "checked";
+    } else {
+        clicked.className = "";
     }
 }

@@ -14,10 +14,10 @@
 
 </head>
 
-<body>
+<body onload="main()">
     <header>
         <h1 class="page-header">Universal Bingo Framework</h1>
-        <p>v1.11</p>
+        <p>v1.2</p>
     </header>
 
 
@@ -28,7 +28,7 @@
         <table id="table">
             <tbody>
                 <tr>
-                    <td id="0"> </td>
+                    <td id="0" onclick="clickMe(this.id)"> </td>
                     <td id="1"> </td>
                     <td id="2"> </td>
                     <td id="3"> </td>
@@ -44,7 +44,7 @@
                 <tr>
                     <td id="20"> </td>
                     <td id="21"> </td>
-                    <td id="free">FREE SPACE</td>
+                    <td id="free" class="checked">FREE SPACE</td>
                     <td id="22"> </td>
                     <td id="23"> </td>
                 </tr>
