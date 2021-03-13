@@ -10,10 +10,15 @@ $.get('bingo.txt', function(data) {
 });
 
 function main() {
-
     for (i = 0; i < 24; i++) {
         var id = (document.getElementById(i));
-        id.setAttribute("onclick", "clickMe(this.id)");
+
+        var div = document.createElement("div");
+        div.class = "cell"
+        div.id = "d" + i;
+        div.setAttribute("onclick", "clickMe(this)");
+
+        id.appendChild(div);
     }
 }
 
@@ -30,14 +35,13 @@ function newName() {
 
         var rng = Math.floor(Math.random() * Math.floor(bingo.length));
 
-        (document.getElementById(i)).innerText = bingo[rng];
+        (document.getElementById("d" + i)).innerText = bingo[rng];
 
         bingo.splice(rng, 1);
     }
 }
 
-function clickMe(clicked_id) {
-    var clicked = (document.getElementById(clicked_id))
+function clickMe(clicked) {
     if (!clicked.className) {
         clicked.className = "checked";
     } else {
