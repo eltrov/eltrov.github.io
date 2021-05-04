@@ -17,14 +17,6 @@ p,
 a {
     color: #fff;
     font-family: "Lora", "Courier New", monospace, serif;
-}
-
-h1,
-h2 {
-    display: inline-block;
-}
-
-#note {
     text-align: center;
 }
 
@@ -50,4 +42,8 @@ footer {
     color: #fff;
     text-decoration: none;
     text-align: center;
+}
+
+footer a {
+    text-decoration: none;
 }
