@@ -8,13 +8,13 @@ function main() {
     var pCount = 0;
 
     // 64 x 64
-    //var count = 4096;
+    // var count = 4096;
 
     // 128 x 128
     var count = 16384;
 
     // 256 x 256
-    //var count = 65536;
+    // var count = 65536;
     
     var headerCode = makeCode();
     var h1 = document.getElementsByTagName("H1")[0];
@@ -22,12 +22,12 @@ function main() {
 
     for (i = 1; i < count + 1; i++) {
         var code = makeCode();
-        var teamLogo = document.createElement("div");
-        teamLogo.id = "div" + i;
-        teamLogo.className = "team-logo";
-        teamLogo.style = "background-color:" + code + ";";
+        var palette = document.createElement("div");
+        palette.id = "div" + i;
+        palette.className = "pixel";
+        palette.style = "background-color:" + code + ";";
         //teamLogo.innerText = i;
-        (document.getElementById("palette" + pCount)).appendChild(teamLogo);
+        (document.getElementById("palette" + pCount)).appendChild(palette);
 
         if (i % Math.sqrt(count) == 0)
         {
