@@ -39,7 +39,7 @@ var genres2 = [
     "Funk",
     "Rap",
     "Psychedelic",
-    //"Ska"
+    "Ska"
 ]
 
 // debug
