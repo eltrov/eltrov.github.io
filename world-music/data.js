@@ -93,7 +93,6 @@ var langs = [
     "Ecuadorean",
     "Egyptian",
     "Salvadorean",
-    "English",
     "Eritrean",
     "Estonian",
     "Ethiopian",
