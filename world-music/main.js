@@ -9,7 +9,7 @@ function main() {
     console.log(linkLang);
     console.log(linkGenre);
     var h2 = document.getElementById("output");
-    h2.innerHTML = `<a href='https://www.youtube.com/results?search_query=${linkLang}+${linkGenre}' target='_new'>${output}</a>`
+    h2.innerHTML = `<a href='https://www.youtube.com/results?search_query=${linkLang}+${linkGenre}' target='_blank'>${output}</a>`
 
 
 }
