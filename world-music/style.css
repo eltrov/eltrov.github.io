@@ -47,3 +47,7 @@ footer {
 footer a {
     text-decoration: none;
 }
+
+#container {
+    text-align: center;
+}
