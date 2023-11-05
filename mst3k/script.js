@@ -18,7 +18,7 @@ function parseCSVData(data) {
 // Function to load the CSV file in the background
 function loadCSVFile() {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "list.csv", true); // Replace with the path to your CSV file
+    xhr.open("GET", "https://github.com/eltrov/eltrov.github.io/blob/master/mst3k/list.csv", true); // Replace with the path to your CSV file
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const episodes = parseCSVData(xhr.responseText);
