@@ -19,13 +19,6 @@ body {
     text-align: center;
 }
 
-.container {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 button {
     background-color: #0074D9;
     color: #fff;
