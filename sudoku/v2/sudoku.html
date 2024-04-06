@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Math Helper</title>
+    <link rel="stylesheet" href="sudoku.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="left-section" id="leftSection">
+            <table class="flex-table">
+                <thead>
+                    <tr>
+                        <th>2-Digit Sums</th>
+                    </tr>
+                </thead>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="2sum6" onclick="toggleVisibility('2sum6')">6</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum7" onclick="toggleVisibility('2sum7')">7</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum8" onclick="toggleVisibility('2sum8')">8</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum9" onclick="toggleVisibility('2sum9')">9</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="2sum10" onclick="toggleVisibility('2sum10')">10</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum11" onclick="toggleVisibility('2sum11')">11</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum12" onclick="toggleVisibility('2sum12')">12</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum13" onclick="toggleVisibility('2sum13')">13</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="2sum14" onclick="toggleVisibility('2sum14')">14</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum15" onclick="toggleVisibility('2sum15')">15</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum16" onclick="toggleVisibility('2sum16')">16</td>
+                    <td class="flex-cell digit toggleOFF" data-id="2sum17" onclick="toggleVisibility('2sum17')">17</td>
+                    <!-- <td class="spacer"></td> -->
+                </tr>
+            </table>
+
+            <table class="flex-table">
+                <thead>
+                    <tr>
+                        <th>3-Digit Sums</th>
+                    </tr>
+                </thead>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="3sum6" onclick="toggleVisibility('3sum6')">6</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum7" onclick="toggleVisibility('3sum7')">7</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum8" onclick="toggleVisibility('3sum8')">8</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum9" onclick="toggleVisibility('3sum9')">9</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="3sum10" onclick="toggleVisibility('3sum10')">10</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum11" onclick="toggleVisibility('3sum11')">11</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum12" onclick="toggleVisibility('3sum12')">12</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum13" onclick="toggleVisibility('3sum13')">13</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="3sum14" onclick="toggleVisibility('3sum14')">14</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum15" onclick="toggleVisibility('3sum15')">15</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum16" onclick="toggleVisibility('3sum16')">16</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum17" onclick="toggleVisibility('3sum17')">17</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="flex-cell digit toggleOFF" data-id="3sum18" onclick="toggleVisibility('3sum18')">18</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum19" onclick="toggleVisibility('3sum19')">19</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum20" onclick="toggleVisibility('3sum20')">20</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum21" onclick="toggleVisibility('3sum21')">21</td>
+                </tr>
+                <tr class="flex-row">
+                    <td class="spacer"></td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum22" onclick="toggleVisibility('3sum22')">22</td>
+                    <td class="flex-cell digit toggleOFF" data-id="3sum23" onclick="toggleVisibility('3sum23')">23</td>
+                    <td class="flex-cell digit digit-special toggleOFF" data-id="3sum24"
+                        onclick="toggleVisibility('3sum24')">24</td>
+                    <td class="spacer"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="right-section" id="rightSection">
+            <!-- 2-Digit Sums-->
+            <div id="2sum6" class="sums">
+                <p onclick="mark(this)">6 = 1 + 5</p>
+                <p onclick="mark(this)">6 = 2 + 4</p>
+            </div>
+            <div id="2sum7" class="sums">
+                <p onclick="mark(this)">7 = 1 + 6</p>
+                <p onclick="mark(this)">7 = 2 + 5</p>
+                <p onclick="mark(this)">7 = 3 + 4</p>
+            </div>
+            <div id="2sum8" class="sums">
+                <p onclick="mark(this)">8 = 7 + 1</p>
+                <p onclick="mark(this)">8 = 6 + 2</p>
+                <p onclick="mark(this)">8 = 5 + 3</p>
+            </div>
+            <div id="2sum9" class="sums">
+                <p onclick="mark(this)">9 = 8 + 1</p>
+                <p onclick="mark(this)">9 = 7 + 2</p>
+                <p onclick="mark(this)">9 = 6 + 3</p>
+                <p onclick="mark(this)">9 = 5 + 4</p>
+            </div>
+            <div id="2sum10" class="sums">
+                <p onclick="mark(this)">10 = 9 + 1</p>
+                <p onclick="mark(this)">10 = 8 + 2</p>
+                <p onclick="mark(this)">10 = 7 + 3</p>
+                <p onclick="mark(this)">10 = 6 + 4</p>
+            </div>
+            <div id="2sum11" class="sums">
+                <p onclick="mark(this)">11 = 9 + 2</p>
+                <p onclick="mark(this)">11 = 8 + 3</p>
+                <p onclick="mark(this)">11 = 7 + 4</p>
+                <p onclick="mark(this)">11 = 6 + 5</p>
+            </div>
+            <div id="2sum12" class="sums">
+                <p onclick="mark(this)">12 = 9 + 3</p>
+                <p onclick="mark(this)">12 = 8 + 4</p>
+                <p onclick="mark(this)">12 = 7 + 5</p>
+            </div>
+            <div id="2sum13" class="sums">
+                <p onclick="mark(this)">13 = 9 + 4</p>
+                <p onclick="mark(this)">13 = 8 + 5</p>
+                <p onclick="mark(this)">13 = 7 + 6</p>
+            </div>
+            <div id="2sum14" class="sums">
+                <p onclick="mark(this)">14 = 9 + 5</p>
+                <p onclick="mark(this)">14 = 8 + 6</p>
+            </div>
+            <div id="2sum15" class="sums">
+                <p onclick="mark(this)">15 = 9 + 6</p>
+                <p onclick="mark(this)">15 = 8 + 7</p>
+            </div>
+            <div id="2sum16" class="sums">
+                <p onclick="mark(this)">16 = 9 + 7</p>
+            </div>
+            <div id="2sum17" class="sums">
+                <p onclick="mark(this)">17 = 9 + 8</p>
+            </div>
+            <!-- 3-Digit Sums -->
+            <div id="3sum6" class="sums">
+                <p onclick="mark(this)">6 = 1 + 2 + 3</p>
+            </div>
+            <div id="3sum7" class="sums">
+                <p onclick="mark(this)">7 = 1 + 2 + 4</p>
+            </div>
+            <div id="3sum8" class="sums">
+                <p onclick="mark(this)">8 = 1 + 2 + 5</p>
+                <p onclick="mark(this)">8 = 1 + 3 + 4</p>
+            </div>
+            <div id="3sum9" class="sums">
+                <p onclick="mark(this)">9 = 1 + 2 + 6</p>
+                <p onclick="mark(this)">9 = 1 + 3 + 5</p>
+                <p onclick="mark(this)">9 = 2 + 3 + 4</p>
+            </div>
+            <div id="3sum10" class="sums">
+                <p onclick="mark(this)">10 = 9 + 1</p>
+                <p onclick="mark(this)">10 = 8 + 2</p>
+                <p onclick="mark(this)">10 = 7 + 3</p>
+                <p onclick="mark(this)">10 = 6 + 4</p>
+            </div>
+            <div id="3sum11" class="sums">
+                <p onclick="mark(this)">11 = 9 + 2</p>
+                <p onclick="mark(this)">11 = 8 + 3</p>
+                <p onclick="mark(this)">11 = 7 + 4</p>
+                <p onclick="mark(this)">11 = 6 + 5</p>
+            </div>
+            <div id="3sum12" class="sums">
+                <p onclick="mark(this)">12 = 9 + 3</p>
+                <p onclick="mark(this)">12 = 8 + 4</p>
+                <p onclick="mark(this)">12 = 7 + 5</p>
+            </div>
+            <div id="3sum13" class="sums">
+                <p onclick="mark(this)">13 = 1 + 3 + 9</p>
+                <p onclick="mark(this)">13 = 1 + 4 + 8</p>
+                <p onclick="mark(this)">13 = 1 + 5 + 7</p>
+                <p onclick="mark(this)">13 = 2 + 3 + 8</p>
+                <p onclick="mark(this)">13 = 2 + 4 + 7</p>
+                <p onclick="mark(this)">13 = 2 + 5 + 6</p>
+                <p onclick="mark(this)">13 = 3 + 4 + 6</p>                
+            </div>
+            <div id="3sum14" class="sums">
+                <p onclick="mark(this)">14 = 9 + 5</p>
+                <p onclick="mark(this)">14 = 8 + 6</p>
+            </div>
+            <div id="3sum15" class="sums">
+                <p onclick="mark(this)">15 = 9 + 6</p>
+                <p onclick="mark(this)">15 = 8 + 7</p>
+            </div>
+            <div id="3sum16" class="sums">
+                <p onclick="mark(this)">16 = 9 + 7</p>
+            </div>
+            <div id="3sum17" class="sums">
+                <p onclick="mark(this)">17 = 9 + 8</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="sudoku.js"></script>
+</body>
+
+</html>

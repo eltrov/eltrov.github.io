@@ -1,0 +1,138 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    /* prevent text selection */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+thead {
+    width: 273px; /* 273 for sure this time!! */
+    padding: 0;
+    margin: none;
+}
+
+th {
+    font-family:  Arial, Helvetica, sans-serif;
+    width: 272px;
+    border: 1px solid black;
+    margin: none;
+    padding: 5px 0;
+    background-color: lightblue;
+}
+
+.main-container {
+    display: flex;
+    height: 100%;
+}
+
+.left-section {
+    width: 50%;
+    border-right: 1px solid black;
+}
+
+.right-section {
+    text-align: center;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+}
+
+.right-section p {
+    padding: 0 10px;
+    margin: 5px;
+}
+
+table {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+td {
+    height: 50px;
+}
+
+.flex-table {
+    height: 100%;
+    align-items: center !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    width: 100%;
+}
+
+.flex-cell {
+    flex: 1;
+    /* border: 1px solid black; */
+    /* #ddd */
+    /* Optional: add borders to cells */
+    padding: 8px;
+    /* Optional: add padding to cells */
+}
+
+.spacer {
+    flex: 0.5;
+    border: none;
+    padding: 8px;
+    /* Optional: add padding to cells */
+}
+
+.digit {
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+    font-family: 'Roboto Mono', monospace;
+    background-color: lightblue;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    /* #ccc */
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.digit:last-child {
+    border-right: 1px solid black;
+}
+
+.digit.digit-special {
+    border-right: 1px solid black;    
+}
+
+.digit.toggleON {
+    background-color: lightgreen;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.red {
+    background-color: lightcoral;
+}
+
+.none {
+    background-color: none;
+}
+
+.sums {
+    display: none;
+}
+
+.sums.visible {
+    display: block;
+    border: 1px solid black;
+    padding: 5px;
+}
+

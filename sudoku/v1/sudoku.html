@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Math Helper</title>
+    <link rel="stylesheet" href="sudoku.css">
+</head>
+<body class="noselect">
+
+    <div class="main-collapsible">
+        <details>
+            <summary>2-Digit Sums (6 to 16)</summary>
+
+            <!-- Sum: 6 -->
+            <div class="sub-collapsible">
+                <details>
+                    <summary class="sub-header">6</summary>
+                    <ul class="sum-list">
+                        <li class="sum-item" onclick="toggleHighlight(this)" oncontextmenu="toggleLowlight(this); return false;">1 + 5</li>
+                        <li class="sum-item" onclick="toggleHighlight(this)" oncontextmenu="toggleLowlight(this); return false;">2 + 4</li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Sum: 7 -->
+            <div class="sub-collapsible">
+                <details>
+                    <summary class="sub-header">7</summary>
+                    <ul class="sum-list">
+                        <li class="sum-item" onclick="toggleHighlight(this)" oncontextmenu="toggleLowlight(this); return false;">1 + 6</li>
+                        <li class="sum-item" onclick="toggleHighlight(this)" oncontextmenu="toggleLowlight(this); return false;">2 + 5</li>
+                        <li class="sum-item" onclick="toggleHighlight(this)" oncontextmenu="toggleLowlight(this); return false;">3 + 4</li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Continue adding sub-collapsible sections for other sums -->
+        </details>
+    </div>
+
+    <button id="clearButton" onclick="clearHighlight()">Clear Highlighting</button>
+    <button id="toggleHighlightingButton" onclick="toggleHighlighting()">Toggle Highlighting</button>
+
+    <div id="justifyButtons">
+        <button onclick="setJustification('left')">Left Justify</button>
+        <button onclick="setJustification('center')">Center Justify</button>
+        <button onclick="setJustification('right')">Right Justify</button>
+    </div>
+
+    <script src="sudoku.js"></script>
+</body>
+</html>
