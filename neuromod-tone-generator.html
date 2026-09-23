@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neuromodulation Tone Generator</title>
+<style>
+  :root {
+    --bg: #14181c;
+    --panel: #1c2228;
+    --line: #2c343c;
+    --text: #e8ecef;
+    --dim: #8b98a4;
+    --accent: #5ec2a6;
+    --accent-dim: #3a7d6c;
+    --warn: #d98c5f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    padding: 32px 20px 60px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 4px;
+  }
+  .sub {
+    color: var(--dim);
+    font-size: 13px;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: none; }
+  .row label {
+    font-size: 13px;
+    color: var(--dim);
+    flex: 0 0 150px;
+  }
+  .row .control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+  }
+  input[type="number"] {
+    width: 70px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
+  select {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
+  .val {
+    font-size: 13px;
+    color: var(--accent);
+    width: 60px;
+    text-align: right;
+  }
+  .freq-display {
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+  .freq-list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0 0;
+  }
+  .freq-chip {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 4px 9px;
+    font-size: 12px;
+    color: var(--dim);
+    transition: all 0.08s ease;
+  }
+  .freq-chip.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(94, 194, 166, 0.08);
+  }
+  .status {
+    font-size: 12px;
+    color: var(--dim);
+    text-align: center;
+    height: 16px;
+  }
+  button#playBtn {
+    display: block;
+    margin: 20px auto 0;
+    background: var(--accent-dim);
+    color: #eafff8;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 40px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  button#playBtn.playing {
+    background: var(--warn);
+    color: #2a1c10;
+  }
+  .note {
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Neuromodulation Tone Generator</h1>
+  <p class="sub">Generates a set of pure tones spaced around a center frequency and plays them in randomized order with short pauses — the coordinated-reset pattern used in acoustic neuromodulation. For experimentation only.</p>
+
+  <div class="panel">
+    <div class="row">
+      <label for="centerFreq">Center frequency</label>
+      <div class="control">
+        <input type="range" id="centerFreq" min="100" max="10000" step="1" value="4000">
+        <input type="number" id="centerFreqNum" min="20" max="16000" step="1" value="4000">
+        <span class="val">Hz</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="mode">Spacing mode</label>
+      <div class="control">
+        <select id="mode">
+          <option value="classic" selected>Classic (Tass 2012 ratios, 4 tones)</option>
+          <option value="custom">Custom (log-spaced, N tones)</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" id="numTonesRow">
+      <label for="numTones">Number of tones</label>
+      <div class="control">
+        <input type="range" id="numTones" min="2" max="8" step="1" value="4" disabled>
+        <span class="val" id="numTonesVal">4</span>
+      </div>
+    </div>
+    <div class="row" id="spacingRow">
+      <label for="spacing">Tone spacing</label>
+      <div class="control">
+        <input type="range" id="spacing" min="1" max="60" step="1" value="15" disabled>
+        <span class="val" id="spacingVal">15% / step</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="pulseDur">Pulse duration</label>
+      <div class="control">
+        <input type="range" id="pulseDur" min="50" max="400" step="5" value="160">
+        <span class="val" id="pulseDurVal">160 ms</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="pulsesPerBurst">Pulses per burst</label>
+      <div class="control">
+        <input type="range" id="pulsesPerBurst" min="1" max="30" step="1" value="15">
+        <span class="val" id="pulsesPerBurstVal">13</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="dipDepth">Inter-pulse dip</label>
+      <div class="control">
+        <input type="range" id="dipDepth" min="0" max="100" step="1" value="68">
+        <span class="val" id="dipDepthVal">68%</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="pauseDur">Pause between bursts</label>
+      <div class="control">
+        <input type="range" id="pauseDur" min="0" max="1500" step="10" value="700">
+        <span class="val" id="pauseDurVal">700 ms</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="volume">Volume</label>
+      <div class="control">
+        <input type="range" id="volume" min="0" max="0.5" step="0.01" value="0.15">
+        <span class="val" id="volumeVal">15%</span>
+      </div>
+    </div>
+    <div class="row">
+      <label for="waveform">Waveform</label>
+      <div class="control">
+        <select id="waveform">
+          <option value="sine" selected>Sine</option>
+          <option value="triangle">Triangle</option>
+          <option value="square">Square</option>
+          <option value="sawtooth">Sawtooth</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="freq-display">
+    <div class="freq-list" id="freqList"></div>
+    <div class="status" id="status">stopped</div>
+    <button id="playBtn">PLAY</button>
+  </div>
+
+  <p class="note">
+    <strong>Classic mode</strong> uses the fixed frequency ratios from the original acoustic coordinated reset (CR) method (Tass et al., 2012): tones at 0.766×, 0.9×, 1.1×, and 1.4× the center frequency. Auditory frequency discrimination is roughly logarithmic, so ratio-based spacing keeps tones perceptually equidistant regardless of how high or low the center frequency is. Spectral analysis of a reference sample confirmed these exact ratios (frequencies matched to within 0.3% at a 4000 Hz center).<br><br>
+    <strong>Custom mode</strong> generalizes this to any number of tones using log-spaced ratios: each step multiplies by (1 + spacing%).<br><br>
+    <strong>Burst structure:</strong> what looks like slow amplitude modulation in a spectrogram is actually a rapid sequence of short pulses. Each pulse is a brief tone at one of the ratio-spaced frequencies above, chosen independently at random each time (repeats allowed — not a fixed shuffle). Pulses run back-to-back on one continuous oscillator that steps frequency and dips to a partial low point between them (the "inter-pulse dip" — not full silence), then a full pause follows once the burst finishes. All of this was reverse-engineered from a reference recording: pulse duration ~160ms, ~13 pulses per burst, dip to ~32% of peak between pulses, consecutive-repeat rate ~23% (close to the ~25% expected from pure random selection over 4 tones), and ~700ms silence between bursts.
+  </p>
+</div>
+
+<script>
+let audioCtx = null;
+let playing = false;
+let schedulerTimeout = null;
+let pendingTimeouts = [];
+
+const els = {
+  centerFreq: document.getElementById('centerFreq'),
+  centerFreqNum: document.getElementById('centerFreqNum'),
+  numTones: document.getElementById('numTones'),
+  numTonesVal: document.getElementById('numTonesVal'),
+  spacing: document.getElementById('spacing'),
+  spacingVal: document.getElementById('spacingVal'),
+  pulseDur: document.getElementById('pulseDur'),
+  pulseDurVal: document.getElementById('pulseDurVal'),
+  pulsesPerBurst: document.getElementById('pulsesPerBurst'),
+  pulsesPerBurstVal: document.getElementById('pulsesPerBurstVal'),
+  dipDepth: document.getElementById('dipDepth'),
+  dipDepthVal: document.getElementById('dipDepthVal'),
+  pauseDur: document.getElementById('pauseDur'),
+  pauseDurVal: document.getElementById('pauseDurVal'),
+  volume: document.getElementById('volume'),
+  volumeVal: document.getElementById('volumeVal'),
+  waveform: document.getElementById('waveform'),
+  freqList: document.getElementById('freqList'),
+  status: document.getElementById('status'),
+  playBtn: document.getElementById('playBtn'),
+  mode: document.getElementById('mode'),
+};
+
+els.pulseDur.addEventListener('input', () => {
+  els.pulseDurVal.textContent = els.pulseDur.value + ' ms';
+});
+els.pulsesPerBurst.addEventListener('input', () => {
+  els.pulsesPerBurstVal.textContent = els.pulsesPerBurst.value;
+});
+els.dipDepth.addEventListener('input', () => {
+  els.dipDepthVal.textContent = els.dipDepth.value + '%';
+});
+
+const CLASSIC_RATIOS = [0.766, 0.9, 1.1, 1.4]; // Tass et al. 2012, fixed ratios to tinnitus frequency
+
+els.mode.addEventListener('change', () => {
+  const isCustom = els.mode.value === 'custom';
+  els.numTones.disabled = !isCustom;
+  els.spacing.disabled = !isCustom;
+  renderFreqList();
+});
+
+// keep the slider and number input for center frequency in sync
+els.centerFreq.addEventListener('input', () => {
+  els.centerFreqNum.value = els.centerFreq.value;
+  renderFreqList();
+});
+els.centerFreqNum.addEventListener('input', () => {
+  els.centerFreq.value = els.centerFreqNum.value;
+  renderFreqList();
+});
+
+els.numTones.addEventListener('input', () => {
+  els.numTonesVal.textContent = els.numTones.value;
+  renderFreqList();
+});
+els.spacing.addEventListener('input', () => {
+  els.spacingVal.textContent = els.spacing.value + '% / step';
+  renderFreqList();
+});
+els.pauseDur.addEventListener('input', () => {
+  els.pauseDurVal.textContent = els.pauseDur.value + ' ms';
+});
+els.volume.addEventListener('input', () => {
+  els.volumeVal.textContent = Math.round(els.volume.value * 100) + '%';
+});
+
+function getFrequencies() {
+  const center = parseFloat(els.centerFreqNum.value);
+
+  if (els.mode.value === 'classic') {
+    // Tass et al. 2012 fixed ratios relative to tinnitus/center frequency
+    return CLASSIC_RATIOS.map(r => center * r);
+  }
+
+  // custom: log-spaced ratios, symmetric step offsets skipping the center itself
+  const n = parseInt(els.numTones.value, 10);
+  const stepPct = parseFloat(els.spacing.value) / 100;
+  const half = Math.ceil(n / 2);
+  const offsets = [];
+  for (let i = 1; i <= half; i++) {
+    offsets.push(-i, i);
+  }
+  offsets.sort((a, b) => a - b);
+  const selected = offsets.filter(o => o !== 0).slice(0, n);
+  return selected
+    .map(o => center * Math.pow(1 + stepPct, o))
+    .sort((a, b) => a - b);
+}
+
+function renderFreqList(activeFreq) {
+  const center = parseFloat(els.centerFreqNum.value);
+  const freqs = getFrequencies();
+  els.freqList.innerHTML = '';
+  freqs.forEach(f => {
+    const chip = document.createElement('div');
+    chip.className = 'freq-chip' + (activeFreq === f ? ' active' : '');
+    const ratio = (f / center).toFixed(3);
+    chip.textContent = Math.round(f) + ' Hz (' + ratio + '×)';
+    els.freqList.appendChild(chip);
+  });
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function playBurst() {
+  const now = audioCtx.currentTime;
+  const pulseDur = parseFloat(els.pulseDur.value) / 1000;
+  const numPulses = parseInt(els.pulsesPerBurst.value, 10);
+  const dip = parseFloat(els.dipDepth.value) / 100; // 0 = no dip (flat), 1 = full silence between pulses
+  const peakVol = parseFloat(els.volume.value);
+  const baseline = peakVol * (1 - dip);
+  const freqPool = getFrequencies();
+
+  // pick each pulse independently at random, with repeats allowed (matches measured ~25% same-tone-in-a-row rate)
+  const pulseFreqs = [];
+  for (let i = 0; i < numPulses; i++) {
+    pulseFreqs.push(freqPool[Math.floor(Math.random() * freqPool.length)]);
+  }
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = els.waveform.value;
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  const burstDur = numPulses * pulseDur;
+  const curvePointsPerSec = 300;
+  const numPoints = Math.max(2, Math.round(burstDur * curvePointsPerSec));
+  const curve = new Float32Array(numPoints);
+  for (let i = 0; i < numPoints; i++) {
+    const t = (i / (numPoints - 1)) * burstDur;
+    const phase = (t % pulseDur) / pulseDur; // 0..1 within current pulse
+    const raisedCos = 0.5 - 0.5 * Math.cos(2 * Math.PI * phase); // 0 at edges, 1 at pulse center
+    curve[i] = baseline + (peakVol - baseline) * raisedCos;
+  }
+  gain.gain.setValueCurveAtTime(curve, now, burstDur);
+
+  // step the oscillator's frequency at each pulse boundary
+  pulseFreqs.forEach((f, i) => {
+    osc.frequency.setValueAtTime(f, now + i * pulseDur);
+  });
+
+  osc.start(now);
+  osc.stop(now + burstDur + 0.02);
+
+  return { pulseFreqs, pulseDur, burstDur };
+}
+
+function scheduleNextBurst() {
+  if (!playing) return;
+  const { pulseFreqs, pulseDur, burstDur } = playBurst();
+  const pauseDur = parseFloat(els.pauseDur.value) / 1000;
+
+  // highlight active frequency in the UI as pulses go by
+  pulseFreqs.forEach((f, i) => {
+    const t = setTimeout(() => {
+      if (!playing) return;
+      renderFreqList(f);
+      els.status.textContent = 'pulse ' + Math.round(f) + ' Hz';
+    }, i * pulseDur * 1000);
+    pendingTimeouts.push(t);
+  });
+
+  schedulerTimeout = setTimeout(() => {
+    if (!playing) return;
+    els.status.textContent = 'pause';
+    renderFreqList();
+    schedulerTimeout = setTimeout(scheduleNextBurst, pauseDur * 1000);
+  }, burstDur * 1000);
+}
+
+els.playBtn.addEventListener('click', () => {
+  if (!playing) {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    playing = true;
+    els.playBtn.textContent = 'STOP';
+    els.playBtn.classList.add('playing');
+    scheduleNextBurst();
+  } else {
+    playing = false;
+    clearTimeout(schedulerTimeout);
+    pendingTimeouts.forEach(t => clearTimeout(t));
+    pendingTimeouts = [];
+    els.playBtn.textContent = 'PLAY';
+    els.playBtn.classList.remove('playing');
+    els.status.textContent = 'stopped';
+    renderFreqList();
+  }
+});
+
+renderFreqList();
+</script>
+</body>
+</html>
