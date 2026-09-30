@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Black Rose Garden Cipher Grid</title>
+<title>Grid viewer</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -71,7 +71,9 @@
 </div>
 
 <script>
-const DIRS = ['n', 'e', 's', 'w'];   // f: 0=N 1=E 2=S 3=W
+// f = the side you stand on to view the value, so it is drawn on the opposite
+// side of the cell. Index = f, entry = cell slot: f0 -> bottom, f1 -> left, f2 -> top, f3 -> right.
+const DIRS = ['s', 'w', 'n', 'e'];
 const status = document.getElementById('status');
 
 function parse(text) {
@@ -98,7 +100,8 @@ function parse(text) {
       // "icon_h.png" -> "H"
       const m = d.icon.match(/icon_(.+?)\.\w+$/i);
       const dir = DIRS[d.f];
-      if (m && dir) cell[dir] = m[1].toUpperCase();
+      // digits 0-9 are placeholders: leave the slot blank
+      if (m && dir) { if (!/^\d$/.test(m[1])) cell[dir] = m[1].toUpperCase(); }
       else bad++;
     } else {
       cell.x = '*';                  // anomalous entry (e.g. "joke")
@@ -107,13 +110,13 @@ function parse(text) {
   return { cells, maxX, maxY, bad, clean };
 }
 
-// Seed layer: seed0.txt .. seed3.txt (f0=N, f1=E, f2=S, f3=W).
+// Seed layer: seed0.txt .. seed3.txt, one file per f value (same slot mapping as the data).
 // Each file is a block of text: one line per row (y), one character per column (x).
-// "?" (or a space) means unknown.
+// "?", a space or a digit means unknown.
 const seedGrids = [null, null, null, null];   // each: array of row strings
 function seedAt(x, y, dir) {
   const ch = (seedGrids[DIRS.indexOf(dir)]?.[y] || '')[x];
-  return ch && ch !== '?' && /\S/.test(ch) ? ch.toUpperCase() : null;
+  return ch && ch !== '?' && /[^\s\d]/.test(ch) ? ch.toUpperCase() : null;
 }
 
 let lastClean = [], lastResult = null;
