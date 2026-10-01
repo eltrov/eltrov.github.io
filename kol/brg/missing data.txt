@@ -1,5 +1,5 @@
 y1 f0		f2 impossible
-y2 f0, f2
+y2 f2
 y5 f0, f3	f0 difficult!
 y11 f0		
 y13 f2		 
