@@ -1,2 +1,5 @@
 # ignore images
 *.png
+
+# my craven scribblings
+*.xlsx
