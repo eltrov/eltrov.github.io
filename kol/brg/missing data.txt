@@ -1,0 +1,17 @@
+y1 f0		f2 impossible
+y2 f0, f2
+y5 f0, f3	f0 difficult!
+y11 f0		
+y13 f2		 
+y17 f0		
+y19 f2	
+
+
+y29 f0		not possible, projecting into void
+
+because of weird short rooms, it *IS* possible to find data on rows that normally would not be possible
+
+
+x can be anything
+
+"y":1,"f":0
