@@ -88,3 +88,4 @@
 [{"x":10,"y":12,"f":0,"icon":"icon_z.png"},{"x":11,"y":16,"f":1,"icon":"icon_n.png"}]
 [{"x":8,"y":8,"f":2,"icon":"icon_s.png"},{"x":14,"y":8,"f":1,"icon":"icon_d.png"}]
 [{"x":13,"y":6,"f":0,"icon":"icon_i.png"},{"x":7,"y":12,"f":0,"icon":"icon_w.png"},{"x":10,"y":14,"f":0,"icon":"icon_n.png"},{"x":13,"y":23,"f":3,"icon":"icon_j.png"},{"x":18,"y":6,"f":1,"icon":"icon_r.png"},{"x":23,"y":5,"f":0,"icon":"icon_b.png"},{"x":18,"y":9,"f":2,"icon":"icon_y.png"},{"x":22,"y":9,"f":3,"icon":"icon_y.png"},{"x":1,"y":14,"f":3,"icon":"icon_l.png"}]
+[{"x":16,"y":8,"f":0,"icon":"icon_d.png"},{"x":18,"y":8,"f":1,"icon":"icon_h.png"},{"x":16,"y":12,"f":2,"icon":"icon_a.png"},{"x":16,"y":13,"f":1,"icon":"icon_l.png"},{"x":18,"y":19,"f":1,"icon":"icon_u.png"},{"x":15,"y":20,"f":2,"icon":"icon_s.png"},{"x":18,"y":20,"f":1,"icon":"icon_d.png"},{"x":12,"y":22,"f":3,"icon":"icon_x.png"},{"x":14,"y":22,"f":1,"icon":"icon_s.png"},{"x":2,"y":14,"f":2,"icon":"icon_z.png"}]
