@@ -12,6 +12,8 @@
     --line: #c9c9c9;
     --head: #f2f2f2;
     --anom: #c0392b;
+    --outer: #d9d9d9;
+    --xline: #9a9a9a;
     --hit: #1a1a1a;
     --cell: 44px;
   }
@@ -23,6 +25,8 @@
       --line: #444;
       --head: #262626;
       --anom: #ff7b6b;
+      --outer: #333;
+      --xline: #777;
       --hit: #ffffff;
     }
   }
@@ -53,6 +57,13 @@
   .e { grid-area: 2 / 3; }
   .s { grid-area: 3 / 2; }
   .w { grid-area: 2 / 1; }
+  #grid.xon td {
+    background-image:
+      linear-gradient(to top right, transparent calc(50% - .6px), var(--xline) calc(50% - .6px), var(--xline) calc(50% + .6px), transparent calc(50% + .6px)),
+      linear-gradient(to bottom right, transparent calc(50% - .6px), var(--xline) calc(50% - .6px), var(--xline) calc(50% + .6px), transparent calc(50% + .6px));
+  }
+  #grid.ignore td.out { background: var(--outer); }
+  #grid.ignore td.out .c { visibility: hidden; }
   .seed { color: var(--muted); font-weight: 400; opacity: .6; }
   .hit { font-weight: 900; color: var(--hit); }
   .x { grid-area: 2 / 2; color: var(--anom); font-size: 16px; }
@@ -67,12 +78,16 @@
 <div id="wrap"><table id="grid"></table></div>
 <div id="foot">
   <label><input type="checkbox" id="base1"> Headers start at 1</label>
+  <label><input type="checkbox" id="xon"> Draw X in cells</label>
+  <label><input type="checkbox" id="ignoreOuter"> Ignore outer row</label>
   <button id="export" type="button">Download as data.txt</button>
 </div>
 
 <script>
 // f = the side you stand on to view the value, so it is drawn on the opposite
 // side of the cell. Index = f, entry = cell slot: f0 -> bottom, f1 -> left, f2 -> top, f3 -> right.
+// Outer ring of the grid: row/column 0 and row/column OUTER (data coordinates, not header labels).
+const OUTER = 30;
 const DIRS = ['s', 'w', 'n', 'e'];
 const status = document.getElementById('status');
 
@@ -147,7 +162,7 @@ function render({ cells, maxX, maxY, bad, clean }) {
         else if (seed) inner += `<span class="${k} seed">${seed}</span>`;
       }
       if (c.x) inner += '<span class="x">*</span>';
-      html += '<td>' + (inner ? `<div class="c">${inner}</div>` : '');
+      html += `<td${x === 0 || y === 0 || x === OUTER || y === OUTER ? ' class="out"' : ''}>` + (inner ? `<div class="c">${inner}</div>` : '');
       html += '</td>';
     }
     html += '</tr>';
@@ -162,6 +177,12 @@ function render({ cells, maxX, maxY, bad, clean }) {
 
 ['seedOn', 'base1'].forEach(id =>
   document.getElementById(id).addEventListener('change', () => lastResult && render(lastResult)));
+
+document.getElementById('xon').addEventListener('change', e =>
+  document.getElementById('grid').classList.toggle('xon', e.target.checked));
+
+document.getElementById('ignoreOuter').addEventListener('change', e =>
+  document.getElementById('grid').classList.toggle('ignore', e.target.checked));
 
 function load(text) { render(parse(text)); }
 
