@@ -1,5 +1,23 @@
+cross shape
 x12,y5
 x12,y6
 x12,y7
 x11,y6
 x11,y8
+
+double u shape
+x7,y21
+x7,y22
+x7,y23
+x8,y21
+x9,y21
+x9,y22
+x9,y23
+
+x3,y25
+x3,y26
+x3,y27
+x4,y27
+x5,y25
+x5,y26
+x5,y27
