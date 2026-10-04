@@ -24,9 +24,9 @@
       --fg: #eaeaea;
       --muted: #7d7d7d;
       --line: #444;
-      --head: #222426;
+      --head: #262626;
       --anom: #ff7b6b;
-      --hl: #000;
+      --hl: #5c4a00;
       --outer: #333;
       --xline: #777;
       --hit: #ffffff;
@@ -86,6 +86,9 @@
   <label><input type="checkbox" id="ignoreOuter"> Ignore outer row</label>
   <!-- <button id="export" type="button">Download as data.txt</button> -->
   <button id="clearHl" type="button">Clear highlights</button>
+  <button id="hlExport" type="button">Export highlights</button>
+  <button id="hlImport" type="button">Import highlights</button>
+  <input type="file" id="hlFile" accept=".txt,.csv" hidden>
 </div>
 
 <script>
@@ -201,6 +204,33 @@ document.getElementById('grid').addEventListener('click', e => {
 document.getElementById('clearHl').addEventListener('click', () => {
   highlighted.clear();
   document.querySelectorAll('#grid td.hl').forEach(td => td.classList.remove('hl'));
+});
+
+// Export highlighted cells as "x,y" lines (data coordinates, same as data.txt: 0-based).
+document.getElementById('hlExport').addEventListener('click', () => {
+  if (!highlighted.size) return;
+  const lines = [...highlighted].map(k => k.split(',').map(Number))
+    .sort((a, b) => a[1] - b[1] || a[0] - b[0]).map(p => p.join(','));
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([lines.join('\n') + '\n'], { type: 'text/plain' }));
+  a.download = 'highlights.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+// Import: any line containing two numbers (x then y) is added to the highlights.
+document.getElementById('hlImport').addEventListener('click', () => document.getElementById('hlFile').click());
+document.getElementById('hlFile').addEventListener('change', e => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  file.text().then(text => {
+    for (const line of text.split(/\r?\n/)) {
+      const m = line.match(/(\d+)\D+(\d+)/);
+      if (m) highlighted.add(+m[1] + ',' + +m[2]);
+    }
+    if (lastResult) render(lastResult);
+  });
 });
 
 function load(text) { render(parse(text)); }
