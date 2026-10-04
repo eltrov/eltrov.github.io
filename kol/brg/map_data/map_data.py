@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 """Find every cell containing a given digit in the grids of map_data.txt.
 
-Usage:  python find_cells.py [digit] [input_file] [output_file]
-        python find_cells.py            -> digit 5, map_data.txt, cells_5.txt
+Usage:  python map_data.py [digit] [input_file] [output_file]
+        python map_data.py            -> digit 5, map_data.txt, cells_5.txt
+
+python map_data.py 0 map_data.txt 0-floor.txt
+python map_data.py 1 map_data.txt 1-wall1.txt
+python map_data.py 2 map_data.txt 2-rocks.txt
+python map_data.py 3 map_data.txt 3-decor.txt
+python map_data.py 4 map_data.txt 4-poi.txt
+python map_data.py 5 map_data.txt 5-wall2.txt
+python map_data.py 6 map_data.txt 6-wall3.txt
+python map_data.py 7 map_data.txt 7-wall4.txt
 
 Each input line looks like:  <name><TAB>{"w":31,"grid":"0101...","pos":{...},...}
 Everything before the first "{" is ignored. The grid string is read left to right,
