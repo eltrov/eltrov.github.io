@@ -15,7 +15,6 @@
     --hl: #ffe58a;
     --outer: #d9d9d9;
     --xline: #9a9a9a;
-    --hit: #1a1a1a;
     --cell: 44px;
   }
   @media (prefers-color-scheme: dark) {
@@ -29,7 +28,6 @@
       --hl: #000;
       --outer: #333;
       --xline: #777;
-      --hit: #3f3939;
     }
   }
   html, body { height: 100%; }
@@ -69,7 +67,7 @@
   #grid.ignore td.out { background: var(--outer); }
   #grid.ignore td.out .c { visibility: hidden; }
   .seed { color: var(--muted); font-weight: 400; opacity: .6; }
-  .hit { font-weight: 900; color: var(--hit); }
+  .hit { font-weight: 900; }   /* bold only: colour is inherited, same as any other data value */
   .x { grid-area: 2 / 2; color: var(--anom); font-size: 16px; }
 </style>
 </head>
