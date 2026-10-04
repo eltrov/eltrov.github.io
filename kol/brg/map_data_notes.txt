@@ -1,0 +1,9 @@
+0 floor
+1 wall(1 roses)
+2 rocks
+3 decor
+4 poi
+8 start
+5 wall2 (brick)
+6 wall3 (wrought iron)
+7 wall4 (lattice)

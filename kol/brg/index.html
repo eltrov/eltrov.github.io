@@ -64,8 +64,10 @@
   }
   #grid td { cursor: pointer; }
   #grid td.hl { background-color: var(--hl); }
-  #grid.ignore td.out { background: var(--outer); }
-  #grid.ignore td.out .c { visibility: hidden; }
+  #grid td.out { background: var(--outer); }
+  #grid td.out .c { visibility: hidden; }
+  #ignoreN { width: 1.6em; text-align: center; font: 14px ui-monospace, Menlo, Consolas, monospace; padding: 3px;
+             background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 4px; }
   .seed { color: var(--muted); font-weight: 400; opacity: .6; }
   .hit { font-weight: 900; }   /* bold only: colour is inherited, same as any other data value */
   .x { grid-area: 2 / 2; color: var(--anom); font-size: 16px; }
@@ -81,7 +83,7 @@
 <div id="foot">
   <label><input type="checkbox" id="base1"> Headers start at 1</label>
   <label><input type="checkbox" id="xon"> Draw X in cells</label>
-  <label><input type="checkbox" id="ignoreOuter"> Ignore outer row</label>
+  <label>Ignore outer rows <input type="text" id="ignoreN" value="0" maxlength="1" inputmode="numeric" pattern="[0-9]" size="1" aria-label="Number of outer rows to ignore"></label>
   <!-- <button id="export" type="button">Download as data.txt</button> -->
   <button id="clearHl" type="button">Clear highlights</button>
   <button id="hlExport" type="button">Export highlights</button>
@@ -92,8 +94,10 @@
 <script>
 // f = the side you stand on to view the value, so it is drawn on the opposite
 // side of the cell. Index = f, entry = cell slot: f0 -> bottom, f1 -> left, f2 -> top, f3 -> right.
-// Outer ring of the grid: row/column 0 and row/column OUTER (data coordinates, not header labels).
+// Grid edge is row/column 0 and row/column OUTER (data coordinates, not header labels).
 const OUTER = 30;
+// Depth of a cell from the nearest edge: 0 = outermost row/column, 1 = the next one in, ...
+const ringOf = (x, y) => Math.max(0, Math.min(x, y, OUTER - x, OUTER - y));
 const highlighted = new Set();   // "x,y" of cells the user has filled
 const DIRS = ['s', 'w', 'n', 'e'];
 const status = document.getElementById('status');
@@ -146,6 +150,7 @@ function render({ cells, maxX, maxY, bad, clean }) {
   lastClean = clean;
   lastResult = { cells, maxX, maxY, bad, clean };
   const seedOn = document.getElementById('seedOn').checked;
+  const ignoreN = parseInt(document.getElementById('ignoreN').value, 10) || 0;
   if (seedOn) {                        // let the grid grow to cover the seed files
     for (const g of seedGrids) if (g) {
       maxY = Math.max(maxY, g.length - 1);
@@ -169,7 +174,7 @@ function render({ cells, maxX, maxY, bad, clean }) {
         else if (seed) inner += `<span class="${k} seed">${seed}</span>`;
       }
       if (c.x) inner += '<span class="x">*</span>';
-      const cls = [(x === 0 || y === 0 || x === OUTER || y === OUTER) ? 'out' : '', highlighted.has(x + ',' + y) ? 'hl' : ''].filter(Boolean).join(' ');
+      const cls = [ringOf(x, y) < ignoreN ? 'out' : '', highlighted.has(x + ',' + y) ? 'hl' : ''].filter(Boolean).join(' ');
       html += `<td data-x="${x}" data-y="${y}"${cls ? ` class="${cls}"` : ''}>` + (inner ? `<div class="c">${inner}</div>` : '');
       html += '</td>';
     }
@@ -189,8 +194,10 @@ function render({ cells, maxX, maxY, bad, clean }) {
 document.getElementById('xon').addEventListener('change', e =>
   document.getElementById('grid').classList.toggle('xon', e.target.checked));
 
-document.getElementById('ignoreOuter').addEventListener('change', e =>
-  document.getElementById('grid').classList.toggle('ignore', e.target.checked));
+document.getElementById('ignoreN').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+  if (lastResult) render(lastResult);
+});
 
 document.getElementById('grid').addEventListener('click', e => {
   const td = e.target.closest('td[data-x]');
