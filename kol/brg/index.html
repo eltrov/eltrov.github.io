@@ -232,6 +232,13 @@
       color: var(--bg);
     }
 
+    .viewgroup {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
     #foot3 .count {
       font-size: 14px;
       color: var(--muted);
@@ -249,6 +256,12 @@
 
   <div id="bar">
     <label><input type="checkbox" id="seedOn" checked> Show projected grid</label>
+    <span class="viewgroup" role="radiogroup" aria-label="Grid view">
+      View:
+      <label><input type="radio" name="view" value="literal" checked> Literal</label>
+      <label><input type="radio" name="view" value="realistic"> Realistic</label>
+      <label><input type="radio" name="view" value="squish"> Squish</label>
+    </span>
     <span id="status">Loading…</span>
   </div>
   <div id="wrap">
@@ -323,20 +336,55 @@
     // Each file is a block of text: one line per row (y), one character per column (x).
     // "?", a space or a digit means unknown.
     const seedGrids = [null, null, null, null];   // each: array of row strings
+    // View mode.
+    //  literal   : every value is drawn in the cell it belongs to (x, y, f).
+    //  realistic : a cell shows what you see standing in it and looking out each way, i.e. the
+    //              value on the facing side of the neighbouring cell. N slot <- (x, y-1) S slot,
+    //              E slot <- (x+1, y) W slot, S slot <- (x, y+1) N slot, W slot <- (x-1, y) E slot.
+    //  squish    : literal, except the two edge rows are folded inward:
+    //              f0 of row 0 moves to f2 of row 1, and f2 of row OUTER moves to f0 of row OUTER-1.
+    //              The edge slots they came from are left empty.
+    //  All modes apply to the seeds and to data.txt alike.
+    // Slots: f0 is drawn in the 's' slot, f1 'w', f2 'n', f3 'e'.
+    const STEP = { n: [0, -1], e: [1, 0], s: [0, 1], w: [-1, 0] };
+    const OPP = { n: 's', e: 'w', s: 'n', w: 'e' };
+    const viewMode = () => document.querySelector('input[name="view"]:checked').value;
+
+    // Where the value shown in slot k of cell (x, y) is stored, or null if that slot is empty.
+    function source(x, y, k, mode) {
+      if (mode === 'realistic') return { x: x + STEP[k][0], y: y + STEP[k][1], k: OPP[k] };
+      if (mode === 'squish') {
+        if (y === 0 && k === 's') return null;                           // f0 of the top row moved away
+        if (y === 1 && k === 'n') return { x, y: 0, k: 's' };            // ... into f2 of row 1
+        if (y === OUTER && k === 'n') return null;                       // f2 of the bottom row moved away
+        if (y === OUTER - 1 && k === 's') return { x, y: OUTER, k: 'n' }; // ... into f0 of the row above
+      }
+      return { x, y, k };
+    }
+
     function seedAt(x, y, dir) {
       const ch = (seedGrids[DIRS.indexOf(dir)]?.[y] || '')[x];
       return ch && ch !== '?' && /[^\s\d]/.test(ch) ? ch.toUpperCase() : null;
     }
 
-    // Sum of the four seed letters in a cell (A=1 .. Z=26), or null if any of the four is unknown.
-    function sumAt(x, y) {
+    // Sum of the four letters in a cell (A=1 .. Z=26). Each slot uses the data letter when
+    // there is one (what the grid shows), otherwise the seed letter. Returns null if any of
+    // the four slots has neither. tip lists each letter and which ones came from the seed.
+    function sumInfo(x, y, cells, mode) {
       let total = 0;
+      const parts = [];
       for (const k of DIRS) {
-        const ch = seedAt(x, y, k);
-        if (!ch || !/[A-Z]/.test(ch)) return null;
-        total += ch.charCodeAt(0) - 64;
+        const src = source(x, y, k, mode);
+        if (!src) return null;
+        const dv = (cells.get(src.x + ',' + src.y) || {})[src.k];
+        const fromData = dv && /^[A-Z]$/.test(dv);
+        const ch = fromData ? dv : seedAt(src.x, src.y, src.k);
+        if (!ch || !/^[A-Z]$/.test(ch)) return null;
+        const v = ch.charCodeAt(0) - 64;
+        total += v;
+        parts.push(`${ch}${v}${fromData ? '' : ' (seed)'}`);
       }
-      return total;
+      return { total, tip: `${parts.join(' + ')} = ${total}` };
     }
     // 1 -> A, 26 -> Z, 27 -> A ...
     const sumLetter = n => String.fromCharCode(65 + ((n - 1) % 26));
@@ -348,6 +396,7 @@
       lastResult = { cells, maxX, maxY, bad, clean };
       const seedOn = document.getElementById('seedOn').checked;
       const ignoreN = parseInt(document.getElementById('ignoreN').value, 10) || 0;
+      const mode = viewMode();
       if (seedOn) {                        // let the grid grow to cover the seed files
         for (const g of seedGrids) if (g) {
           maxY = Math.max(maxY, g.length - 1);
@@ -367,14 +416,17 @@
           const c = cells.get(x + ',' + y) || {};
           let inner = '';
           for (const k of DIRS) {
-            const seed = seedOn ? seedAt(x, y, k) : null;
-            if (c[k]) inner += `<span class="${k}${seed === c[k] ? ' hit' : ''}">${c[k]}</span>`;
+            const src = source(x, y, k, mode);
+            const dv = src ? (cells.get(src.x + ',' + src.y) || {})[src.k] : undefined;
+            const seed = seedOn && src ? seedAt(src.x, src.y, src.k) : null;
+            if (dv) inner += `<span class="${k}${seed === dv ? ' hit' : ''}">${dv}</span>`;
             else if (seed) inner += `<span class="${k} seed">${seed}</span>`;
           }
-          const total = showSums ? sumAt(x, y) : null;
+          const info = showSums ? sumInfo(x, y, cells, mode) : null;
+          const total = info ? info.total : null;
           const ignored = ringOf(x, y) < ignoreN;
           if (total !== null) {
-            inner += `<span class="sum${sumsAsLetters ? ' letter' : ''}">${sumsAsLetters ? sumLetter(total) : total}</span>`;
+            inner += `<span class="sum${sumsAsLetters ? ' letter' : ''}" title="${info.tip}">${sumsAsLetters ? sumLetter(total) : total}</span>`;
             if (!ignored) total % 2 ? odds++ : evens++;
           } else if (c.x) inner += '<span class="x">*</span>';
           const cls = [ignored ? 'out' : '', highlighted.has(x + ',' + y) ? 'hl' : '',
@@ -392,6 +444,9 @@
           ? seedGrids.map((g, f) => g ? 'f' + f : null).filter(Boolean).join(' ') + ' loaded'
           : 'no seed files found') : '');
     }
+
+    document.querySelectorAll('input[name="view"]').forEach(r =>
+      r.addEventListener('change', () => lastResult && render(lastResult)));
 
     ['seedOn', 'base1'].forEach(id =>
       document.getElementById(id).addEventListener('change', () => lastResult && render(lastResult)));
