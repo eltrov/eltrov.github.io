@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Black Rose Garden Cipher Grid</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --muted: #8a8a8a;
+      --line: #c9c9c9;
+      --head: #f2f2f2;
+      --anom: #c0392b;
+      --even: #cfe3ff;
+      --odd: #ffd9b8;
+      --hl: #ffe58a;
+      --outer: #d9d9d9;
+      --xline: #9a9a9a;
+      --letter: #1f5fbf;
+      --cell: 44px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1b1b1b;
+        --fg: #eaeaea;
+        --muted: #7d7d7d;
+        --line: #444;
+        --head: #262626;
+        --anom: #ff7b6b;
+        --even: #1f3b5c;
+        --odd: #5c3a1f;
+        --hl: #000;
+        --outer: #333;
+        --xline: #777;
+        --letter: #8ec1ff;
+      }
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      margin: 0;
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #bar {
+      flex: none;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    #foot1,
+    #foot2,
+    #foot3 {
+      flex: none;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    #bar label,
+    #foot1 label,
+    #foot2 label,
+    #foot3 label {
+      font-size: 14px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    #status {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    #wrap {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--head);
+      color: var(--muted);
+      font: 11px system-ui, sans-serif;
+      padding: 2px 4px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    td {
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      width: var(--cell);
+      height: var(--cell);
+    }
+
+    /* 3x3 grid inside each cell: N top, E right, S bottom, W left, anomaly centre */
+    .c {
+      display: grid;
+      grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+      width: var(--cell);
+      height: var(--cell);
+      font: 600 13px/1 ui-monospace, Menlo, Consolas, monospace;
+      text-align: center;
+    }
+
+    .c span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .n {
+      grid-area: 1 / 2;
+    }
+
+    .e {
+      grid-area: 2 / 3;
+    }
+
+    .s {
+      grid-area: 3 / 2;
+    }
+
+    .w {
+      grid-area: 2 / 1;
+    }
+
+    #grid.xon td {
+      background-image:
+        linear-gradient(to top right, transparent calc(50% - .6px), var(--xline) calc(50% - .6px), var(--xline) calc(50% + .6px), transparent calc(50% + .6px)),
+        linear-gradient(to bottom right, transparent calc(50% - .6px), var(--xline) calc(50% - .6px), var(--xline) calc(50% + .6px), transparent calc(50% + .6px));
+    }
+
+    #grid td {
+      cursor: pointer;
+    }
+
+    #grid td.even {
+      background-color: var(--even);
+    }
+
+    #grid td.odd {
+      background-color: var(--odd);
+    }
+
+    #grid td.hl {
+      background-color: var(--hl);
+    }
+
+    #grid td.out {
+      background: var(--outer);
+    }
+
+    #grid td.out .c {
+      visibility: hidden;
+    }
+
+    #ignoreN {
+      width: 1.6em;
+      text-align: center;
+      font: 14px ui-monospace, Menlo, Consolas, monospace;
+      padding: 3px;
+      background: var(--bg);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .seed {
+      color: var(--muted);
+      font-weight: 400;
+      opacity: .6;
+    }
+
+    .hit {
+      font-weight: 900;
+    }
+
+    /* bold only: colour is inherited, same as any other data value */
+    .sum {
+      grid-area: 2 / 2;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+
+    .sum.letter {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--letter);
+    }
+
+    #foot3 button[aria-pressed="true"] {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    .viewgroup {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    #foot3 .count {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .x {
+      grid-area: 2 / 2;
+      color: var(--anom);
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="bar">
+    <label><input type="checkbox" id="seedOn" checked> Show projected grid</label>
+    <span class="viewgroup" role="radiogroup" aria-label="Grid view">
+      View:
+      <label><input type="radio" name="view" value="literal" checked> Literal</label>
+      <label><input type="radio" name="view" value="realistic"> Realistic</label>
+      <label><input type="radio" name="view" value="squish"> Squish</label>
+    </span>
+    <span id="status">Loading…</span>
+  </div>
+  <div id="wrap">
+    <table id="grid"></table>
+  </div>
+  <div id="foot1">
+    <label><input type="checkbox" id="base1"> Headers start at 1</label>
+    <label><input type="checkbox" id="xon"> Draw X in cells</label>
+    <label>Ignore outer rows <input type="text" id="ignoreN" value="0" maxlength="1" inputmode="numeric" pattern="[0-9]"
+        size="1" aria-label="Number of outer rows to ignore"></label>
+    <!-- <button id="export" type="button">Download as data.txt</button> -->
+  </div>
+  <div id="foot2">
+    <button id="clearHl" type="button">Clear highlights</button>
+    <button id="hlExport" type="button">Export highlights</button>
+    <button id="hlImport" type="button">Import highlights</button>
+    <input type="file" id="hlFile" accept=".txt,.csv" hidden>
+  </div>
+
+  <div id="foot3">
+    <button id="sumsBtn" type="button" aria-pressed="false">Show sums</button>
+    <button id="lettersBtn" type="button" aria-pressed="false">Sums to letters</button>
+    <span class="count" id="sumCount"></span>
+  </div>
+
+  <script>
+    // f = the side you stand on to view the value, so it is drawn on the opposite
+    // side of the cell. Index = f, entry = cell slot: f0 -> bottom, f1 -> left, f2 -> top, f3 -> right.
+    // Grid edge is row/column 0 and row/column OUTER (data coordinates, not header labels).
+    const OUTER = 30;
+    // Depth of a cell from the nearest edge: 0 = outermost row/column, 1 = the next one in, ...
+    const ringOf = (x, y) => Math.max(0, Math.min(x, y, OUTER - x, OUTER - y));
+    const highlighted = new Set();   // "x,y" of cells the user has filled
+    const DIRS = ['s', 'w', 'n', 'e'];
+    const status = document.getElementById('status');
+
+    function parse(text) {
+      const cells = new Map();           // "x,y" -> {n,e,s,w,x}
+      let maxX = 0, maxY = 0, bad = 0;
+      const clean = [];
+
+      // Works on one-object-per-line files and on raw dumps like
+      // plaques":[{...},{...}] -- it just finds every flat {...} object.
+      const objs = text.match(/\{[^{}]*\}/g) || [];
+      for (const raw of objs) {
+        let d;
+        try { d = JSON.parse(raw); } catch { bad++; continue; }
+        if (!Number.isInteger(d.x) || !Number.isInteger(d.y)) { bad++; continue; }
+
+        clean.push(raw);
+        const key = d.x + ',' + d.y;
+        const cell = cells.get(key) || {};
+        cells.set(key, cell);
+        maxX = Math.max(maxX, d.x);
+        maxY = Math.max(maxY, d.y);
+
+        if (typeof d.icon === 'string') {
+          // "icon_h.png" -> "H"
+          const m = d.icon.match(/icon_(.+?)\.\w+$/i);
+          const dir = DIRS[d.f];
+          // digits 0-9 are placeholders: leave the slot blank
+          if (m && dir) { if (!/^\d$/.test(m[1])) cell[dir] = m[1].toUpperCase(); }
+          else bad++;
+        } else {
+          cell.x = '*';                  // anomalous entry (e.g. "joke")
+        }
+      }
+      return { cells, maxX, maxY, bad, clean };
+    }
+
+    // Seed layer: seed0.txt .. seed3.txt, one file per f value (same slot mapping as the data).
+    // Each file is a block of text: one line per row (y), one character per column (x).
+    // "?", a space or a digit means unknown.
+    const seedGrids = [null, null, null, null];   // each: array of row strings
+    // View mode.
+    //  literal   : every value is drawn in the cell it belongs to (x, y, f).
+    //  realistic : a cell shows what you see standing in it and looking out each way, i.e. the
+    //              value on the facing side of the neighbouring cell. N slot <- (x, y-1) S slot,
+    //              E slot <- (x+1, y) W slot, S slot <- (x, y+1) N slot, W slot <- (x-1, y) E slot.
+    //  squish    : literal, except the two edge rows are folded inward:
+    //              f0 of row 0 moves to f2 of row 1, and f2 of row OUTER moves to f0 of row OUTER-1.
+    //              The edge slots they came from are left empty.
+    //  All modes apply to the seeds and to data.txt alike.
+    // Slots: f0 is drawn in the 's' slot, f1 'w', f2 'n', f3 'e'.
+    const STEP = { n: [0, -1], e: [1, 0], s: [0, 1], w: [-1, 0] };
+    const OPP = { n: 's', e: 'w', s: 'n', w: 'e' };
+    const viewMode = () => document.querySelector('input[name="view"]:checked').value;
+
+    // Where the value shown in slot k of cell (x, y) is stored, or null if that slot is empty.
+    function source(x, y, k, mode) {
+      if (mode === 'realistic') return { x: x + STEP[k][0], y: y + STEP[k][1], k: OPP[k] };
+      if (mode === 'squish') {
+        if (y === 0 && k === 's') return null;                           // f0 of the top row moved away
+        if (y === 1 && k === 'n') return { x, y: 0, k: 's' };            // ... into f2 of row 1
+        if (y === OUTER && k === 'n') return null;                       // f2 of the bottom row moved away
+        if (y === OUTER - 1 && k === 's') return { x, y: OUTER, k: 'n' }; // ... into f0 of the row above
+      }
+      return { x, y, k };
+    }
+
+    function seedAt(x, y, dir) {
+      const ch = (seedGrids[DIRS.indexOf(dir)]?.[y] || '')[x];
+      return ch && ch !== '?' && /[^\s\d]/.test(ch) ? ch.toUpperCase() : null;
+    }
+
+    // Sum of the four letters in a cell (A=1 .. Z=26). Each slot uses the data letter when
+    // there is one (what the grid shows), otherwise the seed letter. Returns null if any of
+    // the four slots has neither. tip lists each letter and which ones came from the seed.
+    function sumInfo(x, y, cells, mode) {
+      let total = 0;
+      const parts = [];
+      for (const k of DIRS) {
+        const src = source(x, y, k, mode);
+        if (!src) return null;
+        const dv = (cells.get(src.x + ',' + src.y) || {})[src.k];
+        const fromData = dv && /^[A-Z]$/.test(dv);
+        const ch = fromData ? dv : seedAt(src.x, src.y, src.k);
+        if (!ch || !/^[A-Z]$/.test(ch)) return null;
+        const v = ch.charCodeAt(0) - 64;
+        total += v;
+        parts.push(`${ch}${v}${fromData ? '' : ' (seed)'}`);
+      }
+      return { total, tip: `${parts.join(' + ')} = ${total}` };
+    }
+    // 1 -> A, 26 -> Z, 27 -> A ...
+    const sumLetter = n => String.fromCharCode(65 + ((n - 1) % 26));
+    let showSums = false, sumsAsLetters = false;
+
+    let lastClean = [], lastResult = null;
+    function render({ cells, maxX, maxY, bad, clean }) {
+      lastClean = clean;
+      lastResult = { cells, maxX, maxY, bad, clean };
+      const seedOn = document.getElementById('seedOn').checked;
+      const ignoreN = parseInt(document.getElementById('ignoreN').value, 10) || 0;
+      const mode = viewMode();
+      if (seedOn) {                        // let the grid grow to cover the seed files
+        for (const g of seedGrids) if (g) {
+          maxY = Math.max(maxY, g.length - 1);
+          for (const row of g) maxX = Math.max(maxX, row.length - 1);
+        }
+      }
+      let evens = 0, odds = 0;
+      const t = document.getElementById('grid');
+      const off = document.getElementById('base1').checked ? 1 : 0;
+      let html = '<thead><tr><th></th>';
+      for (let x = 0; x <= maxX; x++) html += `<th>${x + off}</th>`;
+      html += '</tr></thead><tbody>';
+
+      for (let y = 0; y <= maxY; y++) {
+        html += `<tr><th>${y + off}</th>`;
+        for (let x = 0; x <= maxX; x++) {
+          const c = cells.get(x + ',' + y) || {};
+          let inner = '';
+          for (const k of DIRS) {
+            const src = source(x, y, k, mode);
+            const dv = src ? (cells.get(src.x + ',' + src.y) || {})[src.k] : undefined;
+            const seed = seedOn && src ? seedAt(src.x, src.y, src.k) : null;
+            if (dv) inner += `<span class="${k}${seed === dv ? ' hit' : ''}">${dv}</span>`;
+            else if (seed) inner += `<span class="${k} seed">${seed}</span>`;
+          }
+          const info = showSums ? sumInfo(x, y, cells, mode) : null;
+          const total = info ? info.total : null;
+          const ignored = ringOf(x, y) < ignoreN;
+          if (total !== null) {
+            inner += `<span class="sum${sumsAsLetters ? ' letter' : ''}" title="${info.tip}">${sumsAsLetters ? sumLetter(total) : total}</span>`;
+            if (!ignored) total % 2 ? odds++ : evens++;
+          } else if (c.x) inner += '<span class="x">*</span>';
+          const cls = [ignored ? 'out' : '', highlighted.has(x + ',' + y) ? 'hl' : '',
+          (total === null || sumsAsLetters) ? '' : (total % 2 ? 'odd' : 'even')].filter(Boolean).join(' ');
+          html += `<td data-x="${x}" data-y="${y}"${cls ? ` class="${cls}"` : ''}>` + (inner ? `<div class="c">${inner}</div>` : '');
+          html += '</td>';
+        }
+        html += '</tr>';
+      }
+      t.innerHTML = html + '</tbody>';
+      document.getElementById('sumCount').textContent = showSums && !sumsAsLetters ? `even: ${evens} · odd: ${odds}` : '';
+      status.textContent = `${cells.size} cells, grid ${maxX + 1} × ${maxY + 1}` +
+        (bad ? `, ${bad} line(s) skipped` : '') +
+        (seedOn ? ', seed: ' + (seedGrids.some(Boolean)
+          ? seedGrids.map((g, f) => g ? 'f' + f : null).filter(Boolean).join(' ') + ' loaded'
+          : 'no seed files found') : '');
+    }
+
+    document.querySelectorAll('input[name="view"]').forEach(r =>
+      r.addEventListener('change', () => lastResult && render(lastResult)));
+
+    ['seedOn', 'base1'].forEach(id =>
+      document.getElementById(id).addEventListener('change', () => lastResult && render(lastResult)));
+
+    document.getElementById('xon').addEventListener('change', e =>
+      document.getElementById('grid').classList.toggle('xon', e.target.checked));
+
+    document.getElementById('ignoreN').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+      if (lastResult) render(lastResult);
+    });
+
+    document.getElementById('grid').addEventListener('click', e => {
+      const td = e.target.closest('td[data-x]');
+      if (!td) return;
+      const key = td.dataset.x + ',' + td.dataset.y;
+      highlighted.has(key) ? highlighted.delete(key) : highlighted.add(key);
+      td.classList.toggle('hl', highlighted.has(key));
+    });
+    document.getElementById('clearHl').addEventListener('click', () => {
+      highlighted.clear();
+      document.querySelectorAll('#grid td.hl').forEach(td => td.classList.remove('hl'));
+    });
+
+    // Export highlighted cells as "x,y" lines (data coordinates, same as data.txt: 0-based).
+    document.getElementById('hlExport').addEventListener('click', () => {
+      if (!highlighted.size) return;
+      const lines = [...highlighted].map(k => k.split(',').map(Number))
+        .sort((a, b) => a[1] - b[1] || a[0] - b[0]).map(p => p.join(','));
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([lines.join('\n') + '\n'], { type: 'text/plain' }));
+      a.download = 'highlights.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Import: any line containing two numbers (x then y) is added to the highlights.
+    document.getElementById('hlImport').addEventListener('click', () => document.getElementById('hlFile').click());
+    document.getElementById('hlFile').addEventListener('change', e => {
+      const file = e.target.files[0];
+      e.target.value = '';
+      if (!file) return;
+      file.text().then(text => {
+        for (const line of text.split(/\r?\n/)) {
+          const m = line.match(/(\d+)\D+(\d+)/);
+          if (m) highlighted.add(+m[1] + ',' + +m[2]);
+        }
+        if (lastResult) render(lastResult);
+      });
+    });
+
+    function setSums(on, letters) {
+      showSums = on;
+      sumsAsLetters = on && letters;
+      document.getElementById('sumsBtn').setAttribute('aria-pressed', on);
+      document.getElementById('lettersBtn').setAttribute('aria-pressed', sumsAsLetters);
+      if (lastResult) render(lastResult);
+    }
+    document.getElementById('sumsBtn').addEventListener('click', () => setSums(!showSums, sumsAsLetters));
+    // Turning letters on also shows the sums; turning sums off also turns letters off.
+    document.getElementById('lettersBtn').addEventListener('click', () => setSums(true, !sumsAsLetters));
+
+    function load(text) { render(parse(text)); }
+
+    // Try data_raw.txt, then data.txt, next to the page (works over http).
+    async function tryFetch(names) {
+      for (const n of names) {
+        try {
+          const r = await fetch(n);
+          if (r.ok) { status.dataset.src = n; return r.text(); }
+        } catch { }
+      }
+      throw new Error('none');
+    }
+    tryFetch(['data.txt', 'data_raw.txt'])
+      .then(t => { load(t); status.textContent = status.dataset.src + ': ' + status.textContent; })
+      .catch(() => {
+        status.textContent = 'Could not auto-load data.txt (browsers block this when the page is opened as a file). Serve the folder over http (e.g. python -m http.server).';
+      });
+
+    // Download as data.txt (disabled; re-enable together with the button in the footer)
+    // document.getElementById('export').addEventListener('click', () => {
+    //   const blob = new Blob([lastClean.join('\n') + '\n'], { type: 'text/plain' });
+    //   const a = document.createElement('a');
+    //   a.href = URL.createObjectURL(blob);
+    //   a.download = 'data.txt';
+    //   a.click();
+    //   URL.revokeObjectURL(a.href);
+    // });
+
+    // Seed files: try seed0..seed3.txt next to the page.
+    function loadSeed(f, text) {
+      seedGrids[f] = text.split(/\r?\n/).filter(l => l.length);
+      if (lastResult) render(lastResult);
+    }
+    for (let f = 0; f < 4; f++)
+      fetch(`seed${f}.txt`).then(r => r.ok ? r.text() : Promise.reject())
+        .then(t => loadSeed(f, t)).catch(() => { });
+
+  </script>
+</body>
+
+</html>
