@@ -13,6 +13,8 @@ python map_data.py 5 map_data.txt 5-wall2.txt
 python map_data.py 6 map_data.txt 6-wall3.txt
 python map_data.py 7 map_data.txt 7-wall4.txt
 
+data source https://rosegarden.lib.co.nz/api/data
+
 Each input line looks like:  <name><TAB>{"w":31,"grid":"0101...","pos":{...},...}
 Everything before the first "{" is ignored. The grid string is read left to right,
 w characters per row; index 0 is x0,y0. Coordinates are 0-based, matching data.txt.
