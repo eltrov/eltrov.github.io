@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DS1 Weapon Category Randomizer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Weapon Category Randomizer</h1>
+  <div class="sub">Dark Souls: Remastered &mdash; click the wheel to spin</div>
+
+  <div class="stage">
+    <div class="pointer"></div>
+    <svg id="wheel" viewBox="-250 -250 500 500" aria-label="Weapon category wheel"></svg>
+    <button class="hub" id="spin">SPIN</button>
+  </div>
+
+  <div class="result" id="result"><span class="hint">Your category will appear here.</span></div>
+
+  <div class="tags" id="tags"></div>
+  <div class="pool" id="pool"></div>
+  <div class="history" id="history"></div>
+  <p><a href="https://darksouls.wiki.fextralife.com/Weapons" target="new" style="color: #e07a1f">Weapon Information</a></p>
+  <script src="script.js"></script>
+</body>
+</html>
