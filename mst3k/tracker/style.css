@@ -12,10 +12,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    justify-content: flex-start;
+    min-height: 100vh;
     margin: 0;
+    padding: 1.5rem 0 4rem;
     text-align: center;
 }
 
@@ -31,8 +31,29 @@ button {
     width: min(90vw, 640px);
 }
 
+/* Reserve room for two lines so long titles don't shove the page around */
+#episode-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.6em;
+    margin: 1rem 0;
+    overflow-wrap: anywhere;
+}
+
+#episode-title.long {
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    #episode-title {
+        min-height: 3.9em;
+    }
+}
+
 #watched-btn {
     margin: 0.5rem 0 1.5rem;
+    border-radius: 8px;
 }
 
 .progress {
@@ -66,8 +87,6 @@ summary {
 }
 
 #history-list {
-    max-height: 30vh;
-    overflow-y: auto;
     margin: 0.75rem 0 0;
     padding-left: 2.5rem;
     text-align: left;
@@ -77,9 +96,11 @@ summary {
 
 .footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
     left: 0;
     right: 0;
+    padding: 10px 0;
+    background: #000;
     font-size: 0.75rem;
     color: #666;
 }

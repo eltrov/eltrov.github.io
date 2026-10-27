@@ -249,8 +249,10 @@ function render() {
     const pct = Math.round((done / total) * 100);
     const finished = done >= total;
 
-    document.getElementById("episode-title").textContent =
-        finished ? "All episodes watched!" : order[done];
+    const titleEl = document.getElementById("episode-title");
+    titleEl.textContent = finished ? "All episodes watched!" : order[done];
+    // Shrink the text a bit for very long episode names
+    titleEl.classList.toggle("long", titleEl.textContent.length > 60);
     document.getElementById("watched-btn").hidden = finished;
     document.getElementById("progress-fill").style.width = pct + "%";
     document.getElementById("progress-text").textContent = done + " / " + total + " (" + pct + "%)";
