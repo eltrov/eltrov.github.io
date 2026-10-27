@@ -81,7 +81,7 @@ const mst3kEpisodes = [
     "505: The Magic Voyage of Sinbad",
     "506: Eegah",
     "507: I Accuse My Parents",
-    "508: Operation Double 007 (Operation Kid Brother / O.K. Connery)",
+    "508: Operation Double 007",
     "509: The Girl in Lovers Lane",
     "510: The Painted Hills",
     "511: Gunslinger",
@@ -294,7 +294,7 @@ function render() {
     document.getElementById("progress-fill").style.width = pct + "%";
     document.getElementById("progress-text").textContent = done + " / " + total + " (" + pct + "%)";
     document.getElementById("seed").textContent = state.seed;
-    document.getElementById("history-count").textContent = done;
+    // document.getElementById("history-count").textContent = done;
 
     // Watch history, in the order the episodes were watched
     const list = document.getElementById("history-list");

@@ -120,8 +120,9 @@ summary {
     right: 0;
     padding: 10px 0;
     background: #000;
-    font-size: 0.75rem;
-    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
 }
 
 #reset-btn {
