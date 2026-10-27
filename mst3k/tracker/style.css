@@ -29,6 +29,7 @@ button {
 
 .container {
     width: min(90vw, 640px);
+    min-width: 60vw;
 }
 
 /* Reserve room for two lines so long titles don't shove the page around */
@@ -86,12 +87,28 @@ summary {
     cursor: pointer;
 }
 
-#history-list {
-    margin: 0.75rem 0 0;
-    padding-left: 2.5rem;
-    text-align: left;
+/* Centered table: index right-aligned, episode name left-aligned */
+#history-table {
+    margin: 0.75rem auto 0;
+    max-width: 100%;
+    border-collapse: collapse;
     font-size: 0.9rem;
     color: #ccc;
+}
+
+#history-table td {
+    padding: 2px 0;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+#history-table td:first-child {
+    padding-right: 0.6rem;
+    text-align: right;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .footer {

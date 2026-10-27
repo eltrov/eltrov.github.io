@@ -262,10 +262,15 @@ function render() {
     // Watch history, in the order the episodes were watched
     const list = document.getElementById("history-list");
     list.innerHTML = "";
-    order.slice(0, done).forEach(function (ep) {
-        const li = document.createElement("li");
-        li.textContent = ep;
-        list.appendChild(li);
+    order.slice(0, done).forEach(function (ep, i) {
+        const row = document.createElement("tr");
+        const num = document.createElement("td");
+        const name = document.createElement("td");
+        num.textContent = (i + 1) + ".";
+        name.textContent = ep;
+        row.appendChild(num);
+        row.appendChild(name);
+        list.appendChild(row);
     });
 }
 
