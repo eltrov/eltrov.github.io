@@ -90,7 +90,8 @@ summary {
 /* Centered table: index right-aligned, episode name left-aligned */
 #history-table {
     margin: 0.75rem auto 0;
-    max-width: 100%;
+    width: min(100%, 36rem);
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 0.9rem;
     color: #ccc;
@@ -104,6 +105,7 @@ summary {
 }
 
 #history-table td:first-child {
+    width: 3.2rem;
     padding-right: 0.6rem;
     text-align: right;
     color: #888;
