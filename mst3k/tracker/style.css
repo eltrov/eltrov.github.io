@@ -89,7 +89,7 @@ summary {
 
 /* Centered table: index right-aligned, episode name left-aligned */
 #history-table {
-    margin: 0.75rem auto 0;
+    margin: 0.75rem 40% 0;
     width: min(100%, 36rem);
     table-layout: fixed;
     border-collapse: collapse;
